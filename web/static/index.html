@@ -1,0 +1,188 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>客服副驾 · 工作台</title>
+  <link rel="stylesheet" href="/static/app.css" />
+</head>
+<body>
+<div id="toast"></div>
+
+<!-- ================= 登录 ================= -->
+<div id="login-view">
+  <div class="topbar">
+    <div class="brand">客服副驾</div>
+    <div class="topbar-right"><span class="hint">内网试点 · 安全工作区</span></div>
+  </div>
+  <div class="login-wrap">
+    <form class="login-card" id="login-form">
+      <h1>客服副驾</h1>
+      <p class="sub">登录后开始处理买家咨询</p>
+      <div class="field">
+        <label class="label" for="agent-id">工号</label>
+        <input id="agent-id" name="agent_id" placeholder="请输入工号" autocomplete="username" required />
+      </div>
+      <div class="field">
+        <label class="label" for="password">密码</label>
+        <input id="password" name="password" type="password" placeholder="请输入密码" autocomplete="current-password" required />
+      </div>
+      <div class="login-error hidden" id="login-error">工号或密码错误</div>
+      <button class="btn-primary" type="submit" id="login-btn">登录</button>
+      <div class="foot">试点账号请向管理员索取</div>
+    </form>
+  </div>
+  <div class="statusbar">
+    <span>仅限内网使用</span>
+    <span class="spacer"></span>
+    <span>客服试点 · 4 人团队</span>
+  </div>
+</div>
+
+<!-- ================= 工作台 ================= -->
+<div id="app-view" class="hidden">
+  <div class="topbar">
+    <div class="brand">客服副驾</div>
+    <div class="topbar-right">
+      <div class="avatar" id="avatar">李</div>
+      <span class="who" id="who">A1004 李</span>
+      <a class="link-btn" id="weekly-link" href="/static/dashboard.html" target="_blank">周报</a>
+      <button class="link-btn" id="logout-btn">退出</button>
+    </div>
+  </div>
+
+  <div class="main">
+    <!-- 左栏 -->
+    <section class="card left">
+      <div class="section-head">
+        <span class="title">消息输入</span>
+        <span class="hint">单次最多 500 字</span>
+      </div>
+
+      <div class="field">
+        <label class="label" for="buyer-message">买家原话</label>
+        <textarea id="buyer-message" maxlength="500"
+          placeholder="粘贴买家原话，例如：我买的显卡什么时候发货？"></textarea>
+        <div class="ta-foot">
+          <span>可拖至 8 行</span>
+          <span><span id="char-count">0</span>/500</span>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="field scene">
+          <label class="label" for="scene">场景</label>
+          <select id="scene">
+            <option value="auto">自动识别</option>
+            <option value="产品">产品咨询</option>
+            <option value="物流">物流咨询</option>
+            <option value="政策">政策</option>
+            <option value="促销">促销</option>
+            <option value="投诉">投诉</option>
+            <option value="技术">技术</option>
+            <option value="闲聊">闲聊</option>
+            <option value="未知">未知</option>
+          </select>
+        </div>
+        <div class="field order">
+          <label class="label" for="order-no">订单号</label>
+          <input id="order-no" placeholder="可留空；涉及查单时再填" />
+          <span class="hint">涉及查单时再填</span>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="label">回复模式</label>
+        <div class="segmented" id="mode">
+          <button type="button" data-level="new">新人</button>
+          <button type="button" data-level="veteran" class="active">老人</button>
+        </div>
+        <span class="hint" id="mode-hint">老人模式 · 精简信息，快速采用</span>
+      </div>
+
+      <div class="generate-row">
+        <button class="btn-primary" id="generate-btn">生成建议</button>
+        <span class="kbd-hint">Ctrl + Enter</span>
+      </div>
+
+      <div class="notice">
+        回复前请核对商品及订单信息<br />
+        复制、保存修改、无用反馈均会记录。
+      </div>
+    </section>
+
+    <!-- 中栏 -->
+    <section class="center">
+      <div class="center-head">
+        <h2>回复建议</h2>
+        <span class="hint" id="center-hint">等待生成</span>
+      </div>
+      <div id="result-area" class="card result-card">
+        <div class="empty-state">
+          <svg viewBox="0 0 30 48" fill="none" stroke="#9CA3AF" stroke-width="1.5">
+            <rect x="1" y="1" width="28" height="33" rx="4" />
+            <path d="M8 12h14M8 18h14M8 24h9" />
+          </svg>
+          <div>粘贴买家消息，Ctrl+Enter 生成建议</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 右栏 -->
+    <aside class="card right">
+      <div class="label">本次会话</div>
+      <div><span class="tag muted" id="session-tag">待采用</span></div>
+      <div class="stat">
+        <div class="k">处理时长</div>
+        <div class="v" id="aht-display">0s</div>
+        <div class="k">从本次输入开始计时</div>
+      </div>
+      <div class="label">操作记录</div>
+      <div class="log" id="log">
+        <div class="log-item"><div class="t">· 尚无操作</div><div class="d">粘贴原话后开始记录</div></div>
+      </div>
+      <div class="usage">
+        <b>每次采用都有记录</b>
+        <span>用于统计采纳率与平均会话处理时长（AHT）。</span>
+      </div>
+    </aside>
+  </div>
+
+  <div class="statusbar">
+    <span id="status-aht">本次 0s</span>
+    <span>模型 <b id="status-model">—</b></span>
+    <span class="spacer"></span>
+    <button class="link-btn" id="useful-btn">有用</button>
+    <button class="link-btn" id="useless-btn">没用</button>
+    <input id="feedback-note" placeholder="备注" />
+  </div>
+</div>
+
+<!-- 无用反馈浮层 -->
+<div class="popover-backdrop hidden" id="popover">
+  <div class="popover">
+    <div class="popover-head">
+      <span class="title">这条建议哪里有问题？</span>
+      <button class="link-btn" id="popover-close">✕</button>
+    </div>
+    <div class="hint">可多选，帮助我们改进后续建议</div>
+    <div class="chips" id="reason-chips">
+      <button type="button" class="chip" data-reason="没有">知识库没有</button>
+      <button type="button" class="chip" data-reason="答错">答错了</button>
+      <button type="button" class="chip" data-reason="过期">内容过期</button>
+      <button type="button" class="chip" data-reason="话术">话术不合适</button>
+    </div>
+    <div class="field">
+      <span class="hint">备注（选填）</span>
+      <input id="useless-note" placeholder="补充说明，例如：客户问的是 X15 不是 Pro" />
+    </div>
+    <div class="popover-foot">
+      <button class="btn-secondary" id="popover-cancel">取消</button>
+      <button class="btn-primary" id="popover-confirm">确认标记</button>
+    </div>
+  </div>
+</div>
+
+<script src="/static/app.js"></script>
+</body>
+</html>

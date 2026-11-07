@@ -1,0 +1,26 @@
+# 环境与密钥
+.env
+.env.*
+!.env.example
+web/.env
+
+# 数据库与运行产物
+*.db
+web/data/
+evaluation/reports/
+**/__pycache__/
+*.pyc
+.pytest_cache/
+
+# 本地备份与临时文件
+backups/
+.dsh-office-*/
+_*.json
+~$*
+*.log
+
+# 编辑器 / 系统
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

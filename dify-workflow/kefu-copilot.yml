@@ -1,0 +1,1797 @@
+app:
+  description: ''
+  icon: 🤖
+  icon_background: '#FFEAD5'
+  icon_type: emoji
+  mode: advanced-chat
+  name: 客服改
+  use_icon_as_answer_icon: false
+dependencies:
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/siliconflow:0.0.61@f0952b183715405503a23ccef015e5d43948591fd10b60690f24c07873eed723
+    version: null
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/deepseek:0.0.24@9e12eef09973667f0eaf4f082af883167e1de88740b22e71e71488d020c3778a
+    version: null
+kind: app
+version: 0.7.0
+workflow:
+  conversation_variables:
+  - description: ''
+    id: 3f685c9e-9bc1-4380-8af6-9f75103819c4
+    name: tool_retry
+    selector:
+    - conversation
+    - tool_retry
+    value: 0
+    value_type: integer
+  - description: ''
+    id: 9f6cc41c-74bb-45af-83ca-98db7598e451
+    name: is_turn_human
+    selector:
+    - conversation
+    - is_turn_human
+    value: false
+    value_type: boolean
+  - description: ''
+    id: 55ba2951-cfb7-4368-85c7-42578bc13123
+    name: clarification_round
+    selector:
+    - conversation
+    - clarification_round
+    value: 0
+    value_type: integer
+  environment_variables: []
+  features:
+    file_upload: {}
+    opening_statement: ''
+    retriever_resource:
+      enabled: true
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInIteration: false
+        isInLoop: false
+        iteration_id: null
+        loop_id: null
+        sourceType: start
+        targetType: assigner
+      id: 1789562177817-source-1789563091120-target
+      selected: false
+      source: '1789562177817'
+      sourceHandle: source
+      target: '1789563091120'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        iteration_id: null
+        loop_id: null
+        sourceType: assigner
+        targetType: template-transform
+      id: 1789563091120-source-1789900000011-target
+      selected: false
+      source: '1789563091120'
+      sourceHandle: source
+      target: '1789900000011'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        iteration_id: null
+        loop_id: null
+        sourceType: if-else
+        targetType: llm
+      id: 1789563096751-source-1789900000002-target
+      source: '1789563096751'
+      sourceHandle: 1a64ea90-7fc4-4b17-b4c0-9377f61bd8b8
+      target: '1789900000002'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        iteration_id: null
+        loop_id: null
+        sourceType: if-else
+        targetType: llm
+      id: 1789563096751-7909403a-30d1-4d96-9de8-34b823f83b2b-1789721830758-target
+      selected: false
+      source: '1789563096751'
+      sourceHandle: 7909403a-30d1-4d96-9de8-34b823f83b2b
+      target: '1789721830758'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        iteration_id: null
+        loop_id: null
+        sourceType: if-else
+        targetType: knowledge-retrieval
+      id: 1789563096751-86791cac-a086-4fe1-ba9b-6e4f1bd533c3-1789721888126-target
+      selected: false
+      source: '1789563096751'
+      sourceHandle: 86791cac-a086-4fe1-ba9b-6e4f1bd533c3
+      target: '1789721888126'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        iteration_id: null
+        loop_id: null
+        sourceType: if-else
+        targetType: knowledge-retrieval
+      id: 1789563096751-af20065e-c56d-428c-b3dc-6fdbff2bf91b-1789721909565-target
+      selected: false
+      source: '1789563096751'
+      sourceHandle: af20065e-c56d-428c-b3dc-6fdbff2bf91b
+      target: '1789721909565'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        iteration_id: null
+        loop_id: null
+        sourceType: if-else
+        targetType: question-classifier
+      id: 1789563096751-true-1789565160296-target
+      selected: false
+      source: '1789563096751'
+      sourceHandle: 'true'
+      target: '1789565160296'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        iteration_id: null
+        loop_id: null
+        sourceType: llm
+        targetType: if-else
+      id: 1789563120831-source-1789563096751-target
+      selected: false
+      source: '1789563120831'
+      sourceHandle: source
+      target: '1789563096751'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        iteration_id: null
+        loop_id: null
+        sourceType: question-classifier
+        targetType: knowledge-retrieval
+      id: 1789565160296-1-1789565168207-target
+      selected: false
+      source: '1789565160296'
+      sourceHandle: '1'
+      target: '1789565168207'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        iteration_id: null
+        loop_id: null
+        sourceType: question-classifier
+        targetType: knowledge-retrieval
+      id: 1789565160296-1789721752557-1789750948580-target
+      selected: false
+      source: '1789565160296'
+      sourceHandle: '1789721752557'
+      target: '1789750948580'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        iteration_id: null
+        loop_id: null
+        sourceType: question-classifier
+        targetType: knowledge-retrieval
+      id: 1789565160296-1789721753766-1789750031893-target
+      selected: false
+      source: '1789565160296'
+      sourceHandle: '1789721753766'
+      target: '1789750031893'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        iteration_id: null
+        loop_id: null
+        sourceType: question-classifier
+        targetType: knowledge-retrieval
+      id: 1789565160296-2-1789721897270-target
+      selected: false
+      source: '1789565160296'
+      sourceHandle: '2'
+      target: '1789721897270'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        iteration_id: null
+        loop_id: null
+        sourceType: knowledge-retrieval
+        targetType: parameter-extractor
+      id: 1789565168207-source-1789721994438-target
+      selected: false
+      source: '1789565168207'
+      sourceHandle: source
+      target: '1789721994438'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        iteration_id: null
+        loop_id: null
+        sourceType: llm
+        targetType: variable-aggregator
+      id: 1789721830758-source-1789736239602-target
+      selected: false
+      source: '1789721830758'
+      sourceHandle: source
+      target: '1789736239602'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        iteration_id: null
+        loop_id: null
+        sourceType: knowledge-retrieval
+        targetType: llm
+      id: 1789721888126-source-1789721929703-target
+      selected: false
+      source: '1789721888126'
+      sourceHandle: source
+      target: '1789721929703'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        iteration_id: null
+        loop_id: null
+        sourceType: knowledge-retrieval
+        targetType: parameter-extractor
+      id: 1789721897270-source-1790773251927-target
+      selected: false
+      source: '1789721897270'
+      sourceHandle: source
+      target: '1790773251927'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        iteration_id: null
+        loop_id: null
+        sourceType: knowledge-retrieval
+        targetType: llm
+      id: 1789721909565-source-1789721925966-target
+      selected: false
+      source: '1789721909565'
+      sourceHandle: source
+      target: '1789721925966'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        iteration_id: null
+        loop_id: null
+        sourceType: llm
+        targetType: variable-aggregator
+      id: 1789721922630-source-1789736239602-target
+      selected: false
+      source: '1789721922630'
+      sourceHandle: source
+      target: '1789736239602'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        iteration_id: null
+        loop_id: null
+        sourceType: llm
+        targetType: variable-aggregator
+      id: 1789721925966-source-1789736239602-target
+      selected: false
+      source: '1789721925966'
+      sourceHandle: source
+      target: '1789736239602'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        iteration_id: null
+        loop_id: null
+        sourceType: llm
+        targetType: variable-aggregator
+      id: 1789721929703-source-1789736239602-target
+      selected: false
+      source: '1789721929703'
+      sourceHandle: source
+      target: '1789736239602'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        iteration_id: null
+        loop_id: null
+        sourceType: parameter-extractor
+        targetType: tool
+      id: 1789721994438-source-1789731455298-target
+      selected: false
+      source: '1789721994438'
+      sourceHandle: source
+      target: '1789731455298'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        iteration_id: null
+        loop_id: null
+        sourceType: tool
+        targetType: llm
+      id: 1789731455298-source-1789731569091-target
+      selected: false
+      source: '1789731455298'
+      sourceHandle: source
+      target: '1789731569091'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        iteration_id: null
+        loop_id: null
+        sourceType: llm
+        targetType: variable-aggregator
+      id: 1789731569091-source-1789736239602-target
+      selected: false
+      source: '1789731569091'
+      sourceHandle: source
+      target: '1789736239602'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        iteration_id: null
+        loop_id: null
+        sourceType: tool
+        targetType: llm
+      id: 1789731640234-source-1789731645578-target
+      selected: false
+      source: '1789731640234'
+      sourceHandle: source
+      target: '1789731645578'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        iteration_id: null
+        loop_id: null
+        sourceType: llm
+        targetType: variable-aggregator
+      id: 1789731645578-source-1789736239602-target
+      selected: false
+      source: '1789731645578'
+      sourceHandle: source
+      target: '1789736239602'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        iteration_id: null
+        loop_id: null
+        sourceType: llm
+        targetType: variable-aggregator
+      id: 1789735390944-source-1789736239602-target
+      selected: false
+      source: '1789735390944'
+      sourceHandle: source
+      target: '1789736239602'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        iteration_id: null
+        loop_id: null
+        sourceType: variable-aggregator
+        targetType: answer
+      id: 1789736239602-source-1789736501096-target
+      selected: false
+      source: '1789736239602'
+      sourceHandle: source
+      target: '1789736501096'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        iteration_id: null
+        loop_id: null
+        sourceType: knowledge-retrieval
+        targetType: llm
+      id: 1789750031893-source-1789721922630-target
+      selected: false
+      source: '1789750031893'
+      sourceHandle: source
+      target: '1789721922630'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        iteration_id: null
+        loop_id: null
+        sourceType: knowledge-retrieval
+        targetType: llm
+      id: 1789750948580-source-1789735390944-target
+      selected: false
+      source: '1789750948580'
+      sourceHandle: source
+      target: '1789735390944'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        iteration_id: null
+        loop_id: null
+        sourceType: parameter-extractor
+        targetType: tool
+      id: 1790773251927-source-1789731640234-target
+      selected: false
+      source: '1790773251927'
+      sourceHandle: source
+      target: '1789731640234'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        iteration_id: null
+        loop_id: null
+        sourceType: template-transform
+        targetType: llm
+      id: 1789900000011-source-1789563120831-target
+      selected: false
+      source: '1789900000011'
+      sourceHandle: source
+      target: '1789563120831'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        iteration_id: null
+        loop_id: null
+        sourceType: llm
+        targetType: answer
+      id: 1789900000002-source-1790779672607-target
+      selected: false
+      source: '1789900000002'
+      sourceHandle: source
+      target: '1790779672607'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        iteration_id: null
+        loop_id: null
+        sourceType: if-else
+        targetType: llm
+      id: 1789563096751-source-1789900000002-target
+      selected: false
+      source: '1789563096751'
+      sourceHandle: 'false'
+      target: '1789900000002'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        selected: false
+        title: 用户输入
+        type: start
+        variables:
+        - variable: order_no
+          label: 订单号（可空）
+          type: text-input
+          required: false
+          max_length: 64
+          options: []
+        - variable: agent_level
+          label: 员工经验
+          type: select
+          required: true
+          options:
+          - new
+          - veteran
+        - variable: scene_hint
+          label: 场景提示
+          type: select
+          required: true
+          options:
+          - auto
+          - 产品
+          - 物流
+          - 政策
+          - 促销
+          - 投诉
+          - 技术
+          - 闲聊
+      height: 73
+      id: '1789562177817'
+      position:
+        x: 37.54005732185334
+        y: 73.52791966007108
+      positionAbsolute:
+        x: 37.54005732185334
+        y: 73.52791966007108
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+      zIndex: 0
+    - data:
+        items:
+        - input_type: constant
+          operation: set
+          value: 0
+          variable_selector:
+          - conversation
+          - clarification_round
+        - input_type: constant
+          operation: set
+          value: 0
+          variable_selector:
+          - conversation
+          - tool_retry
+        - input_type: constant
+          operation: set
+          value: false
+          variable_selector:
+          - conversation
+          - is_turn_human
+        selected: false
+        title: 变量赋值
+        type: assigner
+        version: '2'
+      height: 136
+      id: '1789563091120'
+      position:
+        x: 324.96397520890804
+        y: 94.52791966007108
+      positionAbsolute:
+        x: 324.96397520890804
+        y: 94.52791966007108
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+      zIndex: 0
+    - data:
+        cases:
+        - case_id: 'true'
+          conditions:
+          - comparison_operator: contains
+            id: 71aa6091-5fa1-43e9-911d-53438d9d5c09
+            value: consulting
+            varType: string
+            variable_selector:
+            - '1789563120831'
+            - text
+          logical_operator: and
+        - case_id: 86791cac-a086-4fe1-ba9b-6e4f1bd533c3
+          conditions:
+          - comparison_operator: contains
+            id: 27cf2ee7-3fae-4b97-b1f3-2348141850ed
+            value: complaint
+            varType: string
+            variable_selector:
+            - '1789563120831'
+            - text
+          logical_operator: and
+        - case_id: af20065e-c56d-428c-b3dc-6fdbff2bf91b
+          conditions:
+          - comparison_operator: contains
+            id: 5fd4b0a7-90a6-4ba6-b632-4b90afd17291
+            value: tech_support
+            varType: string
+            variable_selector:
+            - '1789563120831'
+            - text
+          logical_operator: and
+        - case_id: 7909403a-30d1-4d96-9de8-34b823f83b2b
+          conditions:
+          - comparison_operator: contains
+            id: 0b23e522-b2b2-4660-a016-5f1c254c658b
+            value: chitchat
+            varType: string
+            variable_selector:
+            - '1789563120831'
+            - text
+          logical_operator: and
+        - case_id: 1a64ea90-7fc4-4b17-b4c0-9377f61bd8b8
+          conditions:
+          - comparison_operator: contains
+            id: dd8c4bcc-272a-49b6-8fb0-e67386793491
+            value: unknown
+            varType: string
+            variable_selector:
+            - '1789563120831'
+            - text
+          logical_operator: and
+        selected: false
+        title: 条件分支
+        type: if-else
+      height: 388
+      id: '1789563096751'
+      position:
+        x: 949.391971705579
+        y: -2.4559117817365426
+      positionAbsolute:
+        x: 949.391971705579
+        y: -2.4559117817365426
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+      zIndex: 0
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        memory: null
+        model:
+          completion_params:
+            temperature: 0.2
+            max_tokens: 200
+          mode: chat
+          name: deepseek-v4-flash
+          provider: langgenius/deepseek/deepseek
+        prompt_template:
+        - id: 5f550c92-c463-4467-9bbe-0d0ea7fe0daf
+          role: system
+          text: "你是 hp 数码店客服副驾的路由分类器。输入是客服员工贴进来的买家原话。\n\n员工指定场景：{{#1789562177817.scene_hint#}}（auto 表示未指定，按内容自行判断）\n\n把买家意图归为以下 5 类之一，只输出一个词，不要输出 JSON、解释或标点：\nconsulting / complaint / tech_support / chitchat / unknown\n\n判定顺序（先看员工指定场景）：\n1. 场景取值不是 auto 时按映射：产品/物流/政策/促销→consulting，投诉→complaint，技术→tech_support，闲聊→chitchat；无法映射→unknown。\n2. 含“赔偿、赔钱、投诉、差评、315、曝光、告你们、平台介入”→ complaint。\n3. 含“坏了、故障、开不了机、蓝屏、连不上、死机、充不进电、发烫”→ tech_support。\n4. 含“订单号、到哪了、物流、快递、几天到、派送”→ consulting。\n5. 含“多少钱、参数、配置、库存、有货、型号、推荐”→ consulting。\n6. 含“活动、优惠、券、满减、积分、会员、赠品”→ consulting。\n7. 只有“在吗、你好、谢谢”或与店铺无关 → chitchat / unknown。\n\n注意：问“拆封了能退吗”“保修多久”属于 consulting，不是 complaint；只有带追责或索赔才归 complaint。\n\n【输出格式】只输出一个 JSON 对象，不要输出思考过程，不要加代码块标记。字段与取值如下：\n{\n  \"reply\": \"中文话术，不超过 200 字，可直接复制发给买家\",\n  \"evidence\": [\"从知识库原文摘录的短句，最多 3 条；没有依据时填空数组 []\"],\n  \"explanation\": \"新人填写：一句话说明为什么这么说；老员工填空字符串 \\\"\\\"\",\n  \"next_action\": \"只能取：直接回复 / 追问订单号 / 追问产品 / 查库存 / 查物流 / 转主管\",\n  \"escalate\": false\n}\n【字段一致】next_action 为「转主管」时 escalate 必须为 true，其余情况必须为 false。\n【explanation 规则】agent_level=veteran 时 explanation 必须是空字符串 \"\"；agent_level=new 时必须写一句为什么。\n【reply 禁词】reply 里绝对不能出现“知识库”“检索”“根据文档”这类内部词。\n【动作边界】只有这六类才 next_action=转主管、escalate=true：索赔/赔偿、退款金额争议、政策例外、客户坚持追责或要投诉到平台、少件/破损/错发需要补发退款、金额≥500 的补偿。\n价格、参数、库存、活动规则、发票、包邮、时效、退货地址、保修范围这类问题，一律 next_action=直接回复、escalate=false。\n知识库没有明确条款时：先按通用口径回答并建议核实，不要直接转主管；只有涉及赔付或例外才转。\n追问产品只在“答案必须依赖具体型号且买家没给型号”时使用；买家给了型号、或问的是品类通用信息，直接回复。\nescalate=true 时 reply 里必须出现“主管”二字；escalate=false 时 reply 里不要出现“主管”。\n"
+        - id: 0c38acb3-df9a-40ad-80f3-e203254a0b53
+          role: user
+          text: '{{#sys.query#}}{{#sys.files#}}'
+        - id: 680b6d9b-e79a-433e-aa40-b4ce72b62f2d
+          role: assistant
+          text: ''
+        selected: false
+        title: 问题分类
+        type: llm
+        vision:
+          enabled: false
+      height: 88
+      id: '1789563120831'
+      position:
+        x: 629.7851988083717
+        y: 94.52791966007108
+      positionAbsolute:
+        x: 629.7851988083717
+        y: 94.52791966007108
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+      zIndex: 0
+    - data:
+        classes:
+        - id: '1'
+          label: CLASS 1
+          name: 产品咨询-关键词：多少钱, 配置, 颜色, 介绍, iPhone, 显卡，硬盘，华为，小米，产品信息，库存，有没有货
+        - id: '2'
+          label: CLASS 2
+          name: 物流咨询
+        - id: '1789721752557'
+          label: CLASS 3
+          name: 店铺政策咨询：询问退换货规则、保修政策、售后流程、发票、配送政策、付款方式等店铺规则。例如：拆封了能退吗？保修多久？发票怎么开？
+        - id: '1789721753766'
+          label: CLASS 4
+          name: 促销活动咨询：询问优惠活动、折扣、优惠券、满减、会员福利、VIP权益、积分、生日优惠、赠品等。例如：618有什么活动？新会员有什么福利？积分能干嘛？
+        instruction: ''
+        model:
+          completion_params:
+            temperature: 0.2
+            max_tokens: 3000
+          mode: chat
+          name: deepseek-v4-flash
+          provider: langgenius/deepseek/deepseek
+        query_variable_selector:
+        - '1789562177817'
+        - sys.query
+        selected: false
+        title: 问题分类器
+        type: question-classifier
+        vision:
+          enabled: false
+      height: 262
+      id: '1789565160296'
+      position:
+        x: 1286.187882140939
+        y: -263.1658953744304
+      positionAbsolute:
+        x: 1286.187882140939
+        y: -263.1658953744304
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+      zIndex: 0
+    - data:
+        dataset_ids:
+        - 7e0f827c-62ce-422a-912e-447e252ceaa5
+        multiple_retrieval_config:
+          reranking_enable: true
+          reranking_mode: reranking_model
+          reranking_model:
+            reranking_provider_name: langgenius/siliconflow/siliconflow
+            reranking_model_name: BAAI/bge-reranker-v2-m3
+          score_threshold: null
+          top_k: 8
+          weights:
+            weight_type: customized
+            vector_setting:
+              vector_weight: 0.7
+              embedding_provider_name: ''
+              embedding_model_name: ''
+            keyword_setting:
+              keyword_weight: 0.3
+        query_attachment_selector: []
+        query_variable_selector:
+        - '1789900000011'
+        - output
+        retrieval_mode: multiple
+        selected: false
+        title: 知识检索
+        type: knowledge-retrieval
+      height: 52
+      id: '1789565168207'
+      position:
+        x: 1734.3498829271405
+        y: -282.206203813221
+      positionAbsolute:
+        x: 1734.3498829271405
+        y: -282.206203813221
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+      zIndex: 0
+    - data:
+        context:
+          enabled: true
+          variable_selector:
+          - sys
+          - query
+        memory:
+          query_prompt_template: '{{#sys.query#}}
+
+
+            {{#sys.files#}}'
+          role_prefix:
+            assistant: ''
+            user: ''
+          window:
+            enabled: false
+            size: 50
+        model:
+          completion_params:
+            temperature: 0.2
+            max_tokens: 3000
+          mode: chat
+          name: deepseek-v4-flash
+          provider: langgenius/deepseek/deepseek
+        model_selector: null
+        prompt_template:
+        - id: 126ea421-550c-4cbf-85e2-92fd7d9435b4
+          role: system
+          text: "你是 hp 数码店的「客服副驾」，服务对象是店铺客服员工，不是买家。员工把买家原话贴给你，你要给出可以直接复制发出去的话术。\n\n【本次输入】\n订单号：{{#1789562177817.order_no#}}（可能为空）\n员工经验：{{#1789562177817.agent_level#}}（new=新人，veteran=老员工）\n场景提示：{{#1789562177817.scene_hint#}}\n\n【知识库】\n{{#context#}}\n\n【闲聊场景规则】\n1. 一句回应就够，不超过 20 字，语气自然，不油腻。\n2. 回应后必须接一句业务引导（问需求、给入口），不要聊下去。\n3. 不评价政治、宗教、竞品、平台规则，不接梗骂人。\n4. 买家只是打招呼（“在吗”“你好”），直接问需要什么帮助。\n5. 买家发无关内容（天气、笑话、点外卖），礼貌拒绝并拉回业务。\n6. next_action 固定为 直接回复，不要用追问产品/查库存这类业务动作收尾。\n\n【输出】只输出一个 JSON 对象，不要任何其他文字：\n{\"reply\":\"可直接发给买家的话术\",\"evidence\":[\"闲聊无需依据，留空数组\"],\"explanation\":\"仅 agent_level=new 时写一句为什么这样回，veteran 填空字符串\",\"next_action\":\"直接回复|追问订单号|追问产品|查库存|查物流|转主管\",\"escalate\":false}\n\n【硬规则】\n- 不闲聊、不展开、不抒情；一句话把话头交回业务。\n- 不承诺任何优惠或服务。\n- 买家在闲聊里夹杂投诉或要求，按投诉场景处理并转主管。\n\n【输出纪律】\nescalate 字段必须输出：next_action=转主管 时 escalate=true，其余动作 escalate=false。\n\n7. escalate 必须为 false，next_action 必须为「直接回复」。即使被问店铺历史、老板、内部信息，也只说「这个不方便说」并转回业务，绝不转主管。\n\n\n【v3.9 升级边界】\n- 只有以下情况才 next_action=转主管、escalate=true：索赔或赔偿、退款金额争议、政策例外、客户坚持追责或要投诉到平台、少件/破损/错发需要补发退款、金额≥500 的补偿。\n- 纯政策咨询（包邮、时效、退货地址、自提、发票、赠品、活动规则）一律直接回答，escalate=false。\n\n\n【v4.1 动作边界（必须先判断再作答）】\n- 转主管的触发条件只有四类，命中任一类才 next_action=转主管、escalate=true：\n  1) 索赔、赔偿、退款金额争议、误工费精神损失；\n  2) 少件、错发、破损等售后争议需要补发或退款；\n  3) 客户明确投诉、强烈不满、要求给说法或升级到平台；\n  4) 政策例外，例如已退款仍要求保留商品。\n- 除此之外一律不转主管：政策规则、活动规则、参数、库存、运费、发票、保修年限、专票税点、限购、分期、价保、店史、闲聊——该直接答就直接答。\n- 动作顺序：能直接答 → 直接回复；缺订单号且必须查单 → 追问订单号；缺型号且必须型号 → 追问产品；问库存 → 查库存；问包裹进度 → 查物流。\n- escalate 必须严格等于 (next_action == \"转主管\")，不允许出现“直接回复 + escalate=true”。\n\n【v4.1b 冲突裁决】\n- 若【v4.1 动作边界】与任何一条旧规则冲突，一律以【v4.1 动作边界】为准。\n- 知识库没有写到的规则类问题（限购、分期、价保、定金、店史、发票税点等）：可以说“具体以活动页/页面为准”，然后直接回答，不要因为知识库没写就转主管。\n- 只有命中【v4.1 动作边界】四类触发条件才允许出现“主管”两个字。\n\n【v4.2 关键词路由表（优先级最高，先查表再作答）】\n- 出现下列词之一 → next_action=转主管、escalate=true：退款、赔偿、补偿、投诉、差评、315、12315、曝光、起诉、维权、坏了、坏了两次、损坏、进水、摔、裂、数据丢失、丢件、已签收没收到、要求给说法。\n- 出现下列词之一 → next_action=追问订单号、escalate=false：少件、漏发、赠品没发、错发、发错、多发、少发（若订单号已知，禁止追问，直接用该单号核实并回复）。\n- 出现下列词之一 → next_action=直接回复、escalate=false，禁止出现“主管”：保修几年、保修期、寄修、上门、专票、税点、限购、分期、价保、定金、退货次数、店史、开店多久、推销、发票、开票、运费、包邮、时效、自提、退货地址。\n- 只有一条规则冲突时以本表为准；本表没覆盖的，按【v4.1 动作边界】判断。\n\n【v4.3 关键词路由表（覆盖 v4.2，冲突以本表为准）】\n- 转主管（next_action=转主管、escalate=true）：退款、赔偿、补偿、投诉、差评、315、12315、曝光、起诉、维权、损坏、摔、裂、数据丢失、丢件、已签收没收到、描述不一样、参数不符、开错、重开、保修范围、能不能保修、算不算保修、说好送却没送。\n- 追问订单号（escalate=false）：少件、漏发、赠品没发、错发、发错、多发、少发（若订单号已知，禁止追问，直接用该单号核实并回复）。\n- 查物流（escalate=false）：三天没更新、卡在哪、催一下、到哪了、什么时候到。\n- 直接回复（escalate=false，禁止出现“主管”）：进水后能不能开机、保修几年、保修期、寄修、上门、专票、税点、限购、分期、价保、定金、退货次数、店史、开店多久、推销、发票、开票、运费、包邮、时效、自提、退货地址。\n- 进水一律只给安全提示（不要开机、尽快送修），不转主管。\n\n【v4.4 evidence 规则（覆盖前面所有 evidence 要求）】\n- evidence 必须是**非空数组**，至少 1 条。\n- 知识库检索结果为空时，写你实际依据的内联资料名称并摘一句原文，例如：\"内联资料-产品参数：RTX5080 首发价 7999 元\"。\n- 只有当你确实没有任何依据（闲聊、寒暄、乱码）时，才写一条说明，例如：\"无现成条款，按店铺通用规则回答\"。\n- 禁止返回空数组，禁止编造不存在的文档名。\n\n\n【v4.9 闲聊固定话术（按顺序套用，不要只说一句“请问需要什么”）】\n- 在吗 / 你好 / 有人吗：先回“在的，您好，这里是 hp 数码店客服～”，再给一句能力清单：“可以帮您看产品参数、库存价格、物流进度、退换货和店铺政策，您直接说问题或发订单号就行。”\n- 你是谁 / 你是机器人吗：回“我是 hp 数码店的客服助手，能查产品、库存、物流和售后政策，复杂问题会帮您转给真人同事跟进。”\n- 讲个笑话 / 唱歌 / 闲聊：先用一句话接住（“哈哈，客服这边先不表演才艺～”），再自然带回业务：“不过您要是有想看的机器、想查的订单，我随时能帮。”\n- 国际局势 / 股票 / 时事 / 与业务无关的话题：只回一句“这个我不太方便聊”，紧接着给引导：“您要是想看产品、查物流或问售后，我这边随时帮您。”不要展开评论。\n- 无意义输入 / 乱码 / 单个表情：回“没太看明白您的意思～您是想咨询产品、物流，还是售后问题？直接说就行。”\n- 所有闲聊的 next_action=直接回复、escalate=false，禁止出现“主管”。\n\n\n【v4.10 开场必须完整】\n- “在吗 / 你好 / 有人吗 / 在不在”这类开场，reply 必须包含三部分：①“在的，您好，这里是 hp 数码店客服～”；②一句能力清单（产品参数、库存价格、物流进度、退换货和店铺政策）；③一句引导（“您直接说问题或发订单号就行”）。不得只回一句“在的，您说”。\n\n【输出格式】只输出一个 JSON 对象，不要输出思考过程，不要加代码块标记。字段与取值如下：\n{\n  \"reply\": \"中文话术，不超过 200 字，可直接复制发给买家\",\n  \"evidence\": [\"从知识库原文摘录的短句，最多 3 条；没有依据时填空数组 []\"],\n  \"explanation\": \"新人填写：一句话说明为什么这么说；老员工填空字符串 \\\"\\\"\",\n  \"next_action\": \"只能取：直接回复 / 追问订单号 / 追问产品 / 查库存 / 查物流 / 转主管\",\n  \"escalate\": false\n}\n【字段一致】next_action 为「转主管」时 escalate 必须为 true，其余情况必须为 false。\n【explanation 规则】agent_level=veteran 时 explanation 必须是空字符串 \"\"；agent_level=new 时必须写一句为什么。\n【reply 禁词】reply 里绝对不能出现“知识库”“检索”“根据文档”这类内部词。\n【动作边界】只有这六类才 next_action=转主管、escalate=true：索赔/赔偿、退款金额争议、政策例外、客户坚持追责或要投诉到平台、少件/破损/错发需要补发退款、金额≥500 的补偿。\n价格、参数、库存、活动规则、发票、包邮、时效、退货地址、保修范围这类问题，一律 next_action=直接回复、escalate=false。\n知识库没有明确条款时：先按通用口径回答并建议核实，不要直接转主管；只有涉及赔付或例外才转。\n追问产品只在“答案必须依赖具体型号且买家没给型号”时使用；买家给了型号、或问的是品类通用信息，直接回复。\nescalate=true 时 reply 里必须出现“主管”二字；escalate=false 时 reply 里不要出现“主管”。\n"
+        selected: false
+        title: 闲聊回答
+        type: llm
+        vision:
+          enabled: false
+      height: 88
+      id: '1789721830758'
+      position:
+        x: 2043.449561355958
+        y: 465.10582305527834
+      positionAbsolute:
+        x: 2043.449561355958
+        y: 465.10582305527834
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+      zIndex: 0
+    - data:
+        dataset_ids:
+        - 7e0f827c-62ce-422a-912e-447e252ceaa5
+        multiple_retrieval_config:
+          reranking_enable: true
+          reranking_mode: reranking_model
+          reranking_model:
+            reranking_provider_name: langgenius/siliconflow/siliconflow
+            reranking_model_name: BAAI/bge-reranker-v2-m3
+          score_threshold: null
+          top_k: 8
+          weights:
+            weight_type: customized
+            vector_setting:
+              vector_weight: 0.7
+              embedding_provider_name: ''
+              embedding_model_name: ''
+            keyword_setting:
+              keyword_weight: 0.3
+        query_attachment_selector: []
+        query_variable_selector:
+        - '1789900000011'
+        - output
+        retrieval_mode: multiple
+        selected: false
+        title: 知识检索 2
+        type: knowledge-retrieval
+      height: 52
+      id: '1789721888126'
+      position:
+        x: 1734.3498829271405
+        y: 207.7747519589285
+      positionAbsolute:
+        x: 1734.3498829271405
+        y: 207.7747519589285
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+      zIndex: 0
+    - data:
+        dataset_ids:
+        - 7e0f827c-62ce-422a-912e-447e252ceaa5
+        multiple_retrieval_config:
+          reranking_enable: true
+          reranking_mode: reranking_model
+          reranking_model:
+            reranking_provider_name: langgenius/siliconflow/siliconflow
+            reranking_model_name: BAAI/bge-reranker-v2-m3
+          score_threshold: null
+          top_k: 8
+          weights:
+            weight_type: customized
+            vector_setting:
+              vector_weight: 0.7
+              embedding_provider_name: ''
+              embedding_model_name: ''
+            keyword_setting:
+              keyword_weight: 0.3
+        query_attachment_selector: []
+        query_variable_selector:
+        - '1789900000011'
+        - output
+        retrieval_mode: multiple
+        selected: false
+        title: 知识检索 3
+        type: knowledge-retrieval
+      height: 52
+      id: '1789721897270'
+      position:
+        x: 1734.3498829271405
+        y: -157.08458107092198
+      positionAbsolute:
+        x: 1734.3498829271405
+        y: -157.08458107092198
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+      zIndex: 0
+    - data:
+        dataset_ids:
+        - 7e0f827c-62ce-422a-912e-447e252ceaa5
+        multiple_retrieval_config:
+          reranking_enable: true
+          reranking_mode: reranking_model
+          reranking_model:
+            reranking_provider_name: langgenius/siliconflow/siliconflow
+            reranking_model_name: BAAI/bge-reranker-v2-m3
+          score_threshold: null
+          top_k: 8
+          weights:
+            weight_type: customized
+            vector_setting:
+              vector_weight: 0.7
+              embedding_provider_name: ''
+              embedding_model_name: ''
+            keyword_setting:
+              keyword_weight: 0.3
+        query_attachment_selector: []
+        query_variable_selector:
+        - '1789900000011'
+        - output
+        retrieval_mode: multiple
+        selected: false
+        title: 知识检索 4
+        type: knowledge-retrieval
+      height: 52
+      id: '1789721909565'
+      position:
+        x: 1734.3498829271405
+        y: 329.4497608364019
+      positionAbsolute:
+        x: 1734.3498829271405
+        y: 329.4497608364019
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+      zIndex: 0
+    - data:
+        context:
+          enabled: true
+          variable_selector:
+          - '1789750031893'
+          - result
+        memory:
+          query_prompt_template: '{{#sys.query#}}
+
+
+            {{#sys.files#}}'
+          role_prefix:
+            assistant: ''
+            user: ''
+          window:
+            enabled: false
+            size: 50
+        model:
+          completion_params:
+            temperature: 0.2
+            max_tokens: 3000
+          mode: chat
+          name: deepseek-v4-flash
+          provider: langgenius/deepseek/deepseek
+        model_selector: null
+        prompt_template:
+        - edition_type: basic
+          id: d5400bd3-dc42-4797-8459-3ceb05a259e4
+          role: system
+          text: "你是 hp 数码店的「客服副驾」，服务对象是店铺客服员工，不是买家。员工把买家原话贴给你，你要给出可以直接复制发出去的话术。\n\n【本次输入】\n订单号：{{#1789562177817.order_no#}}（可能为空）\n员工经验：{{#1789562177817.agent_level#}}（new=新人，veteran=老员工）\n场景提示：{{#1789562177817.scene_hint#}}\n\n【知识库】\n{{#context#}}\n\n【促销活动场景规则】\n1. 只讲知识库里有的活动：活动名、时间、门槛、优惠方式，缺一项就说明缺哪项。\n2. 不承诺“最低价”“全网最低”“保价”，除非知识库写明保价规则。\n3. 活动已过期或还没开始，如实说，不要暗示“快有了”。\n4. 买家问“能不能再便宜点”，只能引导到现有活动，不得自行给折扣。\n5. 会员积分、等级权益以知识库为准，不推算。\n\n【输出】只输出一个 JSON 对象，不要任何其他文字：\n{\"reply\":\"可直接发给买家的话术\",\"evidence\":[\"活动条款原文摘录 1-3 条\"],\"explanation\":\"仅 agent_level=new 时写一句为什么这样回，veteran 填空字符串\",\"next_action\":\"直接回复|追问订单号|追问产品|查库存|查物流|转主管\",\"escalate\":false}\n\n【硬规则】\n- reply 是买家能看懂的口语，不得出现“根据知识库”这类字眼。\n- 没有依据的活动信息一律不编；可以说“这个活动我帮您确认一下”。\n- 禁止承诺具体折扣、赠品、返现，除非知识库写明。\n- 买家要求额外优惠、投诉价格、提到比价平台 → next_action=转主管，escalate=true。\n- 一次只推一个活动，不要把全部活动倒给买家。\n\n【输出纪律】\nescalate 字段必须输出：next_action=转主管 时 escalate=true，其余动作 escalate=false。\n\n\n【v3.9 升级边界】\n- 只有以下情况才 next_action=转主管、escalate=true：索赔或赔偿、退款金额争议、政策例外、客户坚持追责或要投诉到平台、少件/破损/错发需要补发退款、金额≥500 的补偿。\n- 纯政策咨询（包邮、时效、退货地址、自提、发票、赠品、活动规则）一律直接回答，escalate=false。\n\n\n【v4.7 活动类直答】\n- 赠品、拼团、活动价、定金膨胀、预售：按知识库活动资料直接回答，next_action=直接回复；资料没写清楚才转主管。\n\n\n【v4.10 已知订单号】\n- 工单里已经带了订单号（order_no 不为“未知”/空）时，禁止再出现“把订单号发我”“方便提供订单号吗”“麻烦告知订单号”这类话；直接用这个单号处理，不需要买家重复提供。\n- 只有当 order_no 为空、且确实需要查单时，才追问订单号。\n\n【输出格式】只输出一个 JSON 对象，不要输出思考过程，不要加代码块标记。字段与取值如下：\n{\n  \"reply\": \"中文话术，不超过 200 字，可直接复制发给买家\",\n  \"evidence\": [\"从知识库原文摘录的短句，最多 3 条；没有依据时填空数组 []\"],\n  \"explanation\": \"新人填写：一句话说明为什么这么说；老员工填空字符串 \\\"\\\"\",\n  \"next_action\": \"只能取：直接回复 / 追问订单号 / 追问产品 / 查库存 / 查物流 / 转主管\",\n  \"escalate\": false\n}\n【字段一致】next_action 为「转主管」时 escalate 必须为 true，其余情况必须为 false。\n【explanation 规则】agent_level=veteran 时 explanation 必须是空字符串 \"\"；agent_level=new 时必须写一句为什么。\n【reply 禁词】reply 里绝对不能出现“知识库”“检索”“根据文档”这类内部词。\n【动作边界】只有这六类才 next_action=转主管、escalate=true：索赔/赔偿、退款金额争议、政策例外、客户坚持追责或要投诉到平台、少件/破损/错发需要补发退款、金额≥500 的补偿。\n价格、参数、库存、活动规则、发票、包邮、时效、退货地址、保修范围这类问题，一律 next_action=直接回复、escalate=false。\n知识库没有明确条款时：先按通用口径回答并建议核实，不要直接转主管；只有涉及赔付或例外才转。\n追问产品只在“答案必须依赖具体型号且买家没给型号”时使用；买家给了型号、或问的是品类通用信息，直接回复。\nescalate=true 时 reply 里必须出现“主管”二字；escalate=false 时 reply 里不要出现“主管”。\n"
+        - id: c8a0c464-18b4-436e-aba2-62ce6850c5d4
+          role: user
+          text: '{{#sys.query#}}'
+        selected: false
+        title: 促销活动回答
+        type: llm
+        vision:
+          enabled: false
+      height: 88
+      id: '1789721922630'
+      position:
+        x: 2043.449561355958
+        y: 85.07243272850214
+      positionAbsolute:
+        x: 2043.449561355958
+        y: 85.07243272850214
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+      zIndex: 0
+    - data:
+        context:
+          enabled: true
+          variable_selector:
+          - '1789721909565'
+          - result
+        memory:
+          query_prompt_template: '{{#sys.query#}}
+
+
+            {{#sys.files#}}'
+          role_prefix:
+            assistant: ''
+            user: ''
+          window:
+            enabled: false
+            size: 50
+        model:
+          completion_params:
+            temperature: 0.2
+            max_tokens: 3000
+          mode: chat
+          name: deepseek-v4-flash
+          provider: langgenius/deepseek/deepseek
+        model_selector: null
+        prompt_template:
+        - id: 1bf79e65-b1ef-4a3b-bae6-7cce348121d1
+          role: system
+          text: "你是 hp 数码店的「客服副驾」，服务对象是店铺客服员工，不是买家。员工把买家原话贴给你，你要给出可以直接复制发出去的话术。\n\n【本次输入】\n订单号：{{#1789562177817.order_no#}}（可能为空）\n员工经验：{{#1789562177817.agent_level#}}（new=新人，veteran=老员工）\n场景提示：{{#1789562177817.scene_hint#}}\n\n【知识库】\n{{#context#}}\n\n【技术支持场景规则】\n1. 通用故障（开不了机、发热、卡顿、黑屏、连不上、充不进电、进水）直接给通用排查步骤，next_action=直接回复，不要先追问型号；只有配件兼容、保修判断、特定型号已知缺陷这类必须知道型号才能答的问题，才 next_action=追问产品。\n2. 排查步骤一次最多 3 步，编号给出，每步说清“做什么、看什么结果”。\n3. 涉及拆机、刷机、恢复出厂设置，必须提示风险（可能丢数据、可能影响保修）。\n4. 保修期内的硬件故障，引导走售后检测，不要教用户自行拆修。\n5. 知识库里没有的故障，不要凭经验瞎猜，回复“这个故障我需要转技术确认”。\n\n【输出】只输出一个 JSON 对象，不要任何其他文字：\n{\"reply\":\"可直接发给买家的话术\",\"evidence\":[\"维修手册或知识库原文摘录 1-3 条\"],\"explanation\":\"仅 agent_level=new 时写一句为什么这样回，veteran 填空字符串\",\"next_action\":\"直接回复|追问订单号|追问产品|查库存|查物流|转主管\",\"escalate\":false}\n\n【硬规则】\n- reply 是买家能看懂的口语，不得出现“根据知识库”这类字眼。\n- 步骤必须可执行，不写“检查一下系统设置”这种空话。\n- 涉及保修失效、数据丢失风险时必须明说。\n- 买家坚持要赔偿或已造成损失 → next_action=转主管，escalate=true。\n\n【输出纪律】\nescalate 字段必须输出：next_action=转主管 时 escalate=true，其余动作 escalate=false。\n- 通用故障（蓝屏、卡顿、发热、进水、充不进电等）先给排查步骤、next_action=直接回复，不要追问订单号。\n\n5. 边界：软件/设置/使用问题 → 直接给步骤，直接回复；硬件损坏（进水/摔坏/屏幕破裂/人为损坏）或需要保修判定 → next_action=转主管、escalate=true。不要给拆机、刷机、改装等危险操作教程。\n\n\n【v3.9 升级边界】\n- 只有以下情况才 next_action=转主管、escalate=true：索赔或赔偿、退款金额争议、政策例外、客户坚持追责或要投诉到平台、少件/破损/错发需要补发退款、金额≥500 的补偿。\n- 纯政策咨询（包邮、时效、退货地址、自提、发票、赠品、活动规则）一律直接回答，escalate=false。\n\n\n【v4.1 动作边界（必须先判断再作答）】\n- 转主管的触发条件只有四类，命中任一类才 next_action=转主管、escalate=true：\n  1) 索赔、赔偿、退款金额争议、误工费精神损失；\n  2) 少件、错发、破损等售后争议需要补发或退款；\n  3) 客户明确投诉、强烈不满、要求给说法或升级到平台；\n  4) 政策例外，例如已退款仍要求保留商品。\n- 除此之外一律不转主管：政策规则、活动规则、参数、库存、运费、发票、保修年限、专票税点、限购、分期、价保、店史、闲聊——该直接答就直接答。\n- 动作顺序：能直接答 → 直接回复；缺订单号且必须查单 → 追问订单号；缺型号且必须型号 → 追问产品；问库存 → 查库存；问包裹进度 → 查物流。\n- escalate 必须严格等于 (next_action == \"转主管\")，不允许出现“直接回复 + escalate=true”。\n\n\n【v4.1 技术题分流】\n- 硬件损坏（摔裂、进水、烧毁）、数据恢复、保修是否覆盖的判断 → 转主管（第 3 类投诉/争议前先说明处理路径）。\n- 通用软件或设置问题（不开机、发热、卡顿、黑屏、连不上网、充电慢、蓝牙配对）→ 直接回复给排查步骤，不转主管。\n\n【v4.1b 冲突裁决】\n- 若【v4.1 动作边界】与任何一条旧规则冲突，一律以【v4.1 动作边界】为准。\n- 知识库没有写到的规则类问题（限购、分期、价保、定金、店史、发票税点等）：可以说“具体以活动页/页面为准”，然后直接回答，不要因为知识库没写就转主管。\n- 只有命中【v4.1 动作边界】四类触发条件才允许出现“主管”两个字。\n\n【v4.2 关键词路由表（优先级最高，先查表再作答）】\n- 出现下列词之一 → next_action=转主管、escalate=true：退款、赔偿、补偿、投诉、差评、315、12315、曝光、起诉、维权、坏了、坏了两次、损坏、进水、摔、裂、数据丢失、丢件、已签收没收到、要求给说法。\n- 出现下列词之一 → next_action=追问订单号、escalate=false：少件、漏发、赠品没发、错发、发错、多发、少发（若订单号已知，禁止追问，直接用该单号核实并回复）。\n- 出现下列词之一 → next_action=直接回复、escalate=false，禁止出现“主管”：保修几年、保修期、寄修、上门、专票、税点、限购、分期、价保、定金、退货次数、店史、开店多久、推销、发票、开票、运费、包邮、时效、自提、退货地址。\n- 只有一条规则冲突时以本表为准；本表没覆盖的，按【v4.1 动作边界】判断。\n\n【v4.3 关键词路由表（覆盖 v4.2，冲突以本表为准）】\n- 转主管（next_action=转主管、escalate=true）：退款、赔偿、补偿、投诉、差评、315、12315、曝光、起诉、维权、损坏、摔、裂、数据丢失、丢件、已签收没收到、描述不一样、参数不符、开错、重开、保修范围、能不能保修、算不算保修、说好送却没送。\n- 追问订单号（escalate=false）：少件、漏发、赠品没发、错发、发错、多发、少发（若订单号已知，禁止追问，直接用该单号核实并回复）。\n- 查物流（escalate=false）：三天没更新、卡在哪、催一下、到哪了、什么时候到。\n- 直接回复（escalate=false，禁止出现“主管”）：进水后能不能开机、保修几年、保修期、寄修、上门、专票、税点、限购、分期、价保、定金、退货次数、店史、开店多久、推销、发票、开票、运费、包邮、时效、自提、退货地址。\n- 进水一律只给安全提示（不要开机、尽快送修），不转主管。\n\n【v4.4 evidence 规则（覆盖前面所有 evidence 要求）】\n- evidence 必须是**非空数组**，至少 1 条。\n- 知识库检索结果为空时，写你实际依据的内联资料名称并摘一句原文，例如：\"内联资料-产品参数：RTX5080 首发价 7999 元\"。\n- 只有当你确实没有任何依据（闲聊、寒暄、乱码）时，才写一条说明，例如：\"无现成条款，按店铺通用规则回答\"。\n- 禁止返回空数组，禁止编造不存在的文档名。\n\n\n【v4.7 硬件损坏转主管】\n- 进水、摔过、碎屏、黑屏不亮、烧坏、冒烟：属于硬件损坏，next_action=转主管、escalate=true，reply 出现“主管”，不要给拆机或加热、烘干等偏方。\n\n\n【v4.9 不臆造商品】\n- 不知道买家的具体商品时，用“这台设备/这个型号”指代，不要编造型号或品类；需要确认时先问一句型号。\n\n\n【v4.10 已知订单号】\n- 工单里已经带了订单号（order_no 不为“未知”/空）时，禁止再出现“把订单号发我”“方便提供订单号吗”“麻烦告知订单号”这类话；直接用这个单号处理，不需要买家重复提供。\n- 只有当 order_no 为空、且确实需要查单时，才追问订单号。\n\n【输出格式】只输出一个 JSON 对象，不要输出思考过程，不要加代码块标记。字段与取值如下：\n{\n  \"reply\": \"中文话术，不超过 200 字，可直接复制发给买家\",\n  \"evidence\": [\"从知识库原文摘录的短句，最多 3 条；没有依据时填空数组 []\"],\n  \"explanation\": \"新人填写：一句话说明为什么这么说；老员工填空字符串 \\\"\\\"\",\n  \"next_action\": \"只能取：直接回复 / 追问订单号 / 追问产品 / 查库存 / 查物流 / 转主管\",\n  \"escalate\": false\n}\n【字段一致】next_action 为「转主管」时 escalate 必须为 true，其余情况必须为 false。\n【explanation 规则】agent_level=veteran 时 explanation 必须是空字符串 \"\"；agent_level=new 时必须写一句为什么。\n【reply 禁词】reply 里绝对不能出现“知识库”“检索”“根据文档”这类内部词。\n【动作边界】只有这六类才 next_action=转主管、escalate=true：索赔/赔偿、退款金额争议、政策例外、客户坚持追责或要投诉到平台、少件/破损/错发需要补发退款、金额≥500 的补偿。\n价格、参数、库存、活动规则、发票、包邮、时效、退货地址、保修范围这类问题，一律 next_action=直接回复、escalate=false。\n知识库没有明确条款时：先按通用口径回答并建议核实，不要直接转主管；只有涉及赔付或例外才转。\n追问产品只在“答案必须依赖具体型号且买家没给型号”时使用；买家给了型号、或问的是品类通用信息，直接回复。\nescalate=true 时 reply 里必须出现“主管”二字；escalate=false 时 reply 里不要出现“主管”。\n"
+        - id: 9ef9a08a-3ac7-4e10-9b42-3e3d597e3722
+          role: user
+          text: '{{#sys.query#}}'
+        selected: false
+        title: 技术支持回答
+        type: llm
+        vision:
+          enabled: false
+      height: 88
+      id: '1789721925966'
+      position:
+        x: 2043.449561355958
+        y: 329.4497608364019
+      positionAbsolute:
+        x: 2043.449561355958
+        y: 329.4497608364019
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+      zIndex: 0
+    - data:
+        context:
+          enabled: true
+          variable_selector:
+          - '1789721888126'
+          - result
+        memory:
+          query_prompt_template: '{{#sys.query#}}
+
+
+            {{#sys.files#}}'
+          role_prefix:
+            assistant: ''
+            user: ''
+          window:
+            enabled: false
+            size: 50
+        model:
+          completion_params:
+            temperature: 0.2
+            max_tokens: 3000
+          mode: chat
+          name: deepseek-v4-flash
+          provider: langgenius/deepseek/deepseek
+        model_selector: null
+        prompt_template:
+        - id: db650fac-72a5-48a3-8757-140f91625414
+          role: system
+          text: "你是 hp 数码店的「客服副驾」，服务对象是店铺客服员工，不是买家。员工把买家原话贴给你，你要给出可以直接复制发出去的话术。\n\n【本次输入】\n订单号：{{#1789562177817.order_no#}}（可能为空）\n员工经验：{{#1789562177817.agent_level#}}（new=新人，veteran=老员工）\n场景提示：{{#1789562177817.scene_hint#}}\n\n【知识库】\n{{#context#}}\n\n【投诉场景规则】\n0. 投诉类先给处理路径并转主管，不要为了查单先追问订单号；确需订单信息时在 reply 里请买家补充，next_action 仍为转主管。\n1. 第一句必须是安抚，具体到事由（比如“手机刚到手就出问题，确实添堵了”），不要用“亲亲别生气”这种空话。\n2. 第二句给出处理路径：谁负责、下一步做什么、多久给回音。路径只能来自知识库政策。\n3. 政策内能解决的（退换、保修、补发配件），说清条件和需要买家提供什么。\n4. 买家提出赔偿、补偿、误工费、精神损失等任何索赔诉求 → next_action=转主管，escalate=true，不论金额。\n   仅当买家只是询问政策、并未提出索赔时，才按政策直接答复（next_action=直接回复）。\n6. 转交对象统一称「主管」，不要写「店长」「经理」「领导」等其他称呼。\n7. escalate 与 next_action 必须一致：转主管时 escalate=true，其余动作 escalate=false；不要出现“话术说转交、字段却写 false”。\n\n【输出】只输出一个 JSON 对象，不要任何其他文字：\n{\"reply\":\"可直接发给买家的话术\",\"evidence\":[\"政策或流程原文摘录 1-3 条\"],\"explanation\":\"仅 agent_level=new 时写一句为什么这样回，veteran 填空字符串\",\"next_action\":\"直接回复|追问订单号|追问产品|查库存|查物流|转主管\",\"escalate\":false}\n\n【硬规则】\n- reply 是买家能看懂的口语，不得出现“根据知识库”这类字眼。\n- 不得为了平息情绪而承诺政策外的东西；宁可转主管。\n- 每个处理结论都要有 evidence 支撑；没有依据就只安抚 + 转主管。\n- 一次只给一个处理方案，不给买家多选。\n\n【输出纪律】\nescalate 字段必须输出：next_action=转主管 时 escalate=true，其余动作 escalate=false。\n\n\n【v3.9 升级边界】\n- 只有以下情况才 next_action=转主管、escalate=true：索赔或赔偿、退款金额争议、政策例外、客户坚持追责或要投诉到平台、少件/破损/错发需要补发退款、金额≥500 的补偿。\n- 纯政策咨询（包邮、时效、退货地址、自提、发票、赠品、活动规则）一律直接回答，escalate=false。\n\n\n【v4.7 投诉必转主管】\n- 只要买家在投诉、表达质量不满、说描述不符、少件破损、要求给说法，一律 next_action=转主管、escalate=true，reply 必须出现“主管”，不要先追问订单号。\n\n\n【v4.9 不臆造商品】\n- 涉及具体订单时，不要猜商品类型或型号（例如订单里是显卡，不能说成手机）。看不出来就说“您这单的商品”，或先按订单号查物流确认商品后再回答。\n\n\n【v4.10 已知订单号】\n- 工单里已经带了订单号（order_no 不为“未知”/空）时，禁止再出现“把订单号发我”“方便提供订单号吗”“麻烦告知订单号”这类话；直接用这个单号处理，不需要买家重复提供。\n- 只有当 order_no 为空、且确实需要查单时，才追问订单号。\n\n【输出格式】只输出一个 JSON 对象，不要输出思考过程，不要加代码块标记。字段与取值如下：\n{\n  \"reply\": \"中文话术，不超过 200 字，可直接复制发给买家\",\n  \"evidence\": [\"从知识库原文摘录的短句，最多 3 条；没有依据时填空数组 []\"],\n  \"explanation\": \"新人填写：一句话说明为什么这么说；老员工填空字符串 \\\"\\\"\",\n  \"next_action\": \"只能取：直接回复 / 追问订单号 / 追问产品 / 查库存 / 查物流 / 转主管\",\n  \"escalate\": false\n}\n【字段一致】next_action 为「转主管」时 escalate 必须为 true，其余情况必须为 false。\n【explanation 规则】agent_level=veteran 时 explanation 必须是空字符串 \"\"；agent_level=new 时必须写一句为什么。\n【reply 禁词】reply 里绝对不能出现“知识库”“检索”“根据文档”这类内部词。\n【动作边界】只有这六类才 next_action=转主管、escalate=true：索赔/赔偿、退款金额争议、政策例外、客户坚持追责或要投诉到平台、少件/破损/错发需要补发退款、金额≥500 的补偿。\n价格、参数、库存、活动规则、发票、包邮、时效、退货地址、保修范围这类问题，一律 next_action=直接回复、escalate=false。\n知识库没有明确条款时：先按通用口径回答并建议核实，不要直接转主管；只有涉及赔付或例外才转。\n追问产品只在“答案必须依赖具体型号且买家没给型号”时使用；买家给了型号、或问的是品类通用信息，直接回复。\nescalate=true 时 reply 里必须出现“主管”二字；escalate=false 时 reply 里不要出现“主管”。\n"
+        - id: 4e4d7bfe-99b9-4b4f-96d9-4bfbbbb1f9fe
+          role: user
+          text: '{{#sys.query#}}/'
+        selected: false
+        title: 投诉回答
+        type: llm
+        vision:
+          enabled: false
+      height: 88
+      id: '1789721929703'
+      position:
+        x: 2043.449561355958
+        y: 207.7747519589285
+      positionAbsolute:
+        x: 2043.449561355958
+        y: 207.7747519589285
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+      zIndex: 0
+    - data:
+        instruction: '你是一个电商客服助手。请从用户的问题中提取出用户咨询的商品名称。
+
+          /
+
+          规则：
+
+          1. 如果用户明确提到了具体的商品名称或型号，直接提取该商品名称
+
+          2. 如果用户提到了多个商品，提取最主要咨询的那个
+
+          3. 如果用户没有提到具体商品，输出"未知"
+
+          4. 只输出提取到的商品名称，不要输出任何解释、标点或多余内容
+
+
+          示例：
+
+          用户：星耀X15现在有货吗？
+
+          输出：星耀 X15
+
+
+          用户：我想看看降噪耳机Pro 2
+
+          输出：静语降噪耳机 Pro 2
+
+
+          用户：显卡推荐
+
+          输出：未知/'
+        model:
+          completion_params:
+            temperature: 0.2
+            max_tokens: 3000
+          mode: chat
+          name: deepseek-v4-flash
+          provider: langgenius/deepseek/deepseek
+        parameters:
+        - description: 用户咨询的商品名称
+          name: product_name
+          required: false
+          type: string
+        query:
+        - sys
+        - query
+        reasoning_mode: prompt
+        selected: false
+        title: 商品信息提取
+        type: parameter-extractor
+        vision:
+          enabled: false
+      height: 88
+      id: '1789721994438'
+      position:
+        x: 2043.449561355958
+        y: -282.206203813221
+      positionAbsolute:
+        x: 2043.449561355958
+        y: -282.206203813221
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+      zIndex: 0
+    - data:
+        is_team_authorization: true
+        meta: null
+        paramSchemas:
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: ''
+            ja_JP: ''
+            pt_BR: ''
+            zh_Hans: ''
+          input_schema: null
+          label:
+            en_US: product_name
+            ja_JP: product_name
+            pt_BR: product_name
+            zh_Hans: product_name
+          llm_description: ''
+          max: null
+          min: null
+          multiple: false
+          name: product_name
+          options: []
+          placeholder: null
+          precision: null
+          required: true
+          scope: null
+          template: null
+          type: string
+        params:
+          product_name: ''
+        plugin_id: ''
+        plugin_unique_identifier: ''
+        provider_icon:
+          background: ''
+          content: 🔗
+        provider_icon_dark: null
+        provider_id: stock
+        provider_name: stock
+        provider_show_name: stock
+        provider_type: mcp
+        retry_config:
+          max_retries: 3
+          retry_enabled: true
+          retry_interval: 1000
+        selected: false
+        title: query_stock
+        tool_configurations: {}
+        tool_description: 根据商品名称查询库存、价格、发货信息
+        tool_label: query_stock
+        tool_name: query_stock
+        tool_node_version: '2'
+        tool_parameters:
+          product_name:
+            type: mixed
+            value: '{{#1789721994438.product_name#}}'
+        type: tool
+      height: 114
+      id: '1789731455298'
+      position:
+        x: 2388.1236757337865
+        y: -313.87439367177046
+      positionAbsolute:
+        x: 2388.1236757337865
+        y: -313.87439367177046
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+      zIndex: 0
+    - data:
+        context:
+          enabled: true
+          variable_selector:
+          - '1789565168207'
+          - result
+        memory:
+          query_prompt_template: '{{#sys.query#}}
+
+
+            {{#sys.files#}}'
+          role_prefix:
+            assistant: ''
+            user: ''
+          window:
+            enabled: false
+            size: 50
+        model:
+          completion_params:
+            temperature: 0.2
+            max_tokens: 3000
+          mode: chat
+          name: deepseek-v4-flash
+          provider: langgenius/deepseek/deepseek
+        model_selector: null
+        prompt_template:
+        - id: f68000c7-df5f-4c1e-afb2-9b374ac55a23
+          role: system
+          text: "你是 hp 数码店的「客服副驾」，服务对象是店铺客服员工，不是买家。员工把买家原话贴给你，你要给出可以直接复制发出去的话术。\n\n【本次输入】\n订单号：{{#1789562177817.order_no#}}（可能为空，不要假装有）\n员工经验：{{#1789562177817.agent_level#}}（new=新人，veteran=老员工）\n场景提示：{{#1789562177817.scene_hint#}}\n\n【知识库】\n{{#context#}}\n\n【产品咨询场景规则】\n1. 只答产品参数、价格、库存、适配、配件；售后政策、物流时效不在这里答。\n2. 价格必须来自知识库原文，按“8+256G 3999 元”这种格式报，不四舍五入、不估算。\n3. 库存只能依据库存查询结果；买家问有没有货/何时到货时 next_action=查库存；没查到就说“我帮您确认一下库存”，不要猜“有货/明天到”。\n4. 买家问“哪个好”时，按用途给一个推荐加一句理由，不要罗列一屏参数。\n5. 买家问的型号知识库里没有，直接说没有这个型号，不要拿相近型号硬凑。\n6. 型号边界：只有“答案必须依赖具体型号”（该型号独有的参数、兼容性、价格）且买家消息里没给型号时，才 next_action=追问产品；\n   其余情况（通用解释、品类常识、购买建议、售后流程）一律直接回答，结尾补一句“具体型号发我再帮您核对参数”即可，不要追问。\n7. 买家已经给了型号（含简称，如 X15、Pro 2、RTX 5080）→ 必须按该型号回答，禁止再追问型号。\n\n【输出】只输出一个 JSON 对象，不要任何其他文字：\n{\"reply\":\"可直接发给买家的话术\",\"evidence\":[\"知识库原文摘录 1-3 条\"],\"explanation\":\"仅 agent_level=new 时写一句为什么这样回，veteran 填空字符串\",\"next_action\":\"直接回复|追问订单号|追问产品|查库存|查物流|转主管\",\"escalate\":false}\n\n【硬规则】\n- reply 是买家能看懂的口语，不得出现“根据知识库”“依据”“检索到”这类字眼。\n- 每个事实性结论都要有 evidence 支撑；没有依据就回“这个我需要确认后回复您”，不得编造价格、库存、参数。\n- 禁止承诺具体到货时间、最低价、赠品；不得贬低竞品或平台。\n- 要求赔偿、投诉升级、提到平台介入/315/差评威胁、金额≥500 元 → next_action=转主管，escalate=true。\n- 买家情绪激烈时，reply 第一句先安抚（不超过 15 字），再给方案；一次只给一个建议。\n\n【输出纪律】\nescalate 字段必须输出：next_action=转主管 时 escalate=true，其余动作 escalate=false。\n\n\n【v3.9 型号追问边界】\n- 买家问的是品类通用参数（长度、接口、功耗、重量、刷新率、续航、USB 口数量、Wi-Fi、能不能装 Linux、能否接双屏）而没给型号时：按知识库主推型号的参数回答，reply 开头点明“以 RTX5080 为例 / 以 X15 Pro 为例”，不要追问型号。\n- 只有价格、库存、兼容性判断、保修是否覆盖这四类必须绑定具体型号、且买家没给型号时，才 next_action=追问产品。\n\n\n【v3.9 升级边界】\n- 只有以下情况才 next_action=转主管、escalate=true：索赔或赔偿、退款金额争议、政策例外、客户坚持追责或要投诉到平台、少件/破损/错发需要补发退款、金额≥500 的补偿。\n- 纯政策咨询（包邮、时效、退货地址、自提、发票、赠品、活动规则）一律直接回答，escalate=false。\n\n\n【v4.7 颜色/对比直答】\n- 问颜色（有没有白色/黑色）、问“和某品牌比怎么样”、问“值不值得买”：按主推型号的口径直接回答，next_action=直接回复，不追问型号。\n\n\n【v4.9 对比与议价】\n- “和 XX 比怎么样”“比 XX 便宜吗”：先问清买家指的是哪一款、对比哪个型号，再按知识库参数做客观对比，不贬低竞品。\n- 砍价/要求便宜：先确认买的是哪款，再按“不跟价、可给活动价或赠品”的口径回复，不要空泛道歉。\n\n\n【v4.10 已知订单号】\n- 工单里已经带了订单号（order_no 不为“未知”/空）时，禁止再出现“把订单号发我”“方便提供订单号吗”“麻烦告知订单号”这类话；直接用这个单号处理，不需要买家重复提供。\n- 只有当 order_no 为空、且确实需要查单时，才追问订单号。\n\n【库存查询结果】{{#1789731455298.text#}}{{#1789731455298.result#}}\n\n【输出格式】只输出一个 JSON 对象，不要输出思考过程，不要加代码块标记。字段与取值如下：\n{\n  \"reply\": \"中文话术，不超过 200 字，可直接复制发给买家\",\n  \"evidence\": [\"从知识库原文摘录的短句，最多 3 条；没有依据时填空数组 []\"],\n  \"explanation\": \"新人填写：一句话说明为什么这么说；老员工填空字符串 \\\"\\\"\",\n  \"next_action\": \"只能取：直接回复 / 追问订单号 / 追问产品 / 查库存 / 查物流 / 转主管\",\n  \"escalate\": false\n}\n【字段一致】next_action 为「转主管」时 escalate 必须为 true，其余情况必须为 false。\n【explanation 规则】agent_level=veteran 时 explanation 必须是空字符串 \"\"；agent_level=new 时必须写一句为什么。\n【reply 禁词】reply 里绝对不能出现“知识库”“检索”“根据文档”这类内部词。\n【动作边界】只有这六类才 next_action=转主管、escalate=true：索赔/赔偿、退款金额争议、政策例外、客户坚持追责或要投诉到平台、少件/破损/错发需要补发退款、金额≥500 的补偿。\n价格、参数、库存、活动规则、发票、包邮、时效、退货地址、保修范围这类问题，一律 next_action=直接回复、escalate=false。\n知识库没有明确条款时：先按通用口径回答并建议核实，不要直接转主管；只有涉及赔付或例外才转。\n追问产品只在“答案必须依赖具体型号且买家没给型号”时使用；买家给了型号、或问的是品类通用信息，直接回复。\nescalate=true 时 reply 里必须出现“主管”二字；escalate=false 时 reply 里不要出现“主管”。\n"
+        - id: f4fcb4cf-2bb6-4db0-88a7-ddc79b749b8b
+          role: user
+          text: '{{{#sys.query#}}'
+        selected: false
+        title: 产品咨询回答
+        type: llm
+        vision:
+          enabled: false
+      height: 88
+      id: '1789731569091'
+      position:
+        x: 2740.67770238126
+        y: -313.87439367177046
+      positionAbsolute:
+        x: 2740.67770238126
+        y: -313.87439367177046
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+      zIndex: 0
+    - data:
+        is_team_authorization: true
+        meta: null
+        paramSchemas:
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: ''
+            ja_JP: ''
+            pt_BR: ''
+            zh_Hans: ''
+          input_schema: null
+          label:
+            en_US: order_number
+            ja_JP: order_number
+            pt_BR: order_number
+            zh_Hans: order_number
+          llm_description: ''
+          max: null
+          min: null
+          multiple: false
+          name: order_number
+          options: []
+          placeholder: null
+          precision: null
+          required: true
+          scope: null
+          template: null
+          type: string
+        params:
+          order_number: ''
+        plugin_id: ''
+        plugin_unique_identifier: ''
+        provider_icon:
+          background: '#6366F1'
+          content: 🔗
+        provider_icon_dark: null
+        provider_id: logistics
+        provider_name: logistics
+        provider_show_name: logistics
+        provider_type: mcp
+        retry_config:
+          max_retries: 3
+          retry_enabled: true
+          retry_interval: 1000
+        selected: false
+        title: query_logistics
+        tool_configurations: {}
+        tool_description: 根据订单号查询物流状态、位置和配送进度
+        tool_label: query_logistics
+        tool_name: query_logistics
+        tool_node_version: '2'
+        tool_parameters:
+          order_number:
+            type: mixed
+            value: '{{#1790773251927.order_number#}}'
+        type: tool
+      height: 114
+      id: '1789731640234'
+      position:
+        x: 2388.1236757337865
+        y: -157.08458107092198
+      positionAbsolute:
+        x: 2388.1236757337865
+        y: -157.08458107092198
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+      zIndex: 0
+    - data:
+        context:
+          enabled: true
+          variable_selector:
+          - '1789721897270'
+          - result
+        memory:
+          query_prompt_template: '{{#sys.query#}}
+
+
+            {{#sys.files#}}'
+          role_prefix:
+            assistant: ''
+            user: ''
+          window:
+            enabled: false
+            size: 50
+        model:
+          completion_params:
+            temperature: 0.2
+            max_tokens: 3000
+          mode: chat
+          name: deepseek-v4-flash
+          provider: langgenius/deepseek/deepseek
+        model_selector: null
+        prompt_template:
+        - id: fc1a5b3e-8322-4270-8f85-c7c4c3b8c3b7
+          role: system
+          text: "你是 hp 数码店的「客服副驾」，服务对象是店铺客服员工，不是买家。员工把买家原话贴给你，你要给出可以直接复制发出去的话术。\n\n【本次输入】\n订单号：{{#1789562177817.order_no#}}（可能为空）\n员工经验：{{#1789562177817.agent_level#}}（new=新人，veteran=老员工）\n场景提示：{{#1789562177817.scene_hint#}}\n\n【知识库】\n{{#context#}}\n\n【物流咨询场景规则】\n1. 必须用订单号查物流；没有订单号就先追问订单号，next_action=追问订单号，绝不猜物流状态。\n2. 物流状态只依据查询结果，不推断“应该快到了”。\n3. 查询结果为空或订单号不存在，回复“这个单号我这边暂时查不到，麻烦核对一下”，next_action=追问订单号。\n4. 买家催件时，先共情一句，再给已查到的状态；不承诺“今天送到”“加急”。\n5. 买家同时问产品和物流，先答物流，再补产品。\n\n【输出】只输出一个 JSON 对象，不要任何其他文字：\n{\"reply\":\"可直接发给买家的话术\",\"evidence\":[\"物流查询结果或知识库原文摘录 1-3 条\"],\"explanation\":\"仅 agent_level=new 时写一句为什么这样回，veteran 填空字符串\",\"next_action\":\"直接回复|追问订单号|追问产品|查库存|查物流|转主管\",\"escalate\":false}\n\n【硬规则】\n- reply 是买家能看懂的口语，不得出现“根据知识库”“依据”这类字眼。\n- 没有查询结果支撑时，不得给出任何时效承诺（今天/明天/24 小时内）。\n- 物流超过 7 天无更新、显示丢件、要求赔付 → next_action=转主管，escalate=true。\n- 买家情绪激烈时，reply 第一句先安抚（不超过 15 字），再给方案。\n- agent_level=new 时 explanation 必须写“为什么先要订单号”或“依据是哪条物流记录”。\n\n【输出纪律】\nescalate 字段必须输出：next_action=转主管 时 escalate=true，其余动作 escalate=false。\n\n\n【v3.9 政策题直答】\n- 包邮、运费、偏远地区能否发货、门店自提、退货地址、退款时效、改地址、物流时效：直接按知识库回答，next_action=直接回复，不要转主管。\n- 只有查具体包裹进度、签收争议、少件破损，才 next_action=查物流/追问订单号/转主管。\n\n\n【v3.9 升级边界】\n- 只有以下情况才 next_action=转主管、escalate=true：索赔或赔偿、退款金额争议、政策例外、客户坚持追责或要投诉到平台、少件/破损/错发需要补发退款、金额≥500 的补偿。\n- 纯政策咨询（包邮、时效、退货地址、自提、发票、赠品、活动规则）一律直接回答，escalate=false。\n\n\n【v4.7 少件破损转主管】\n- 少件、漏发、错发、破损：next_action=转主管、escalate=true，reply 出现“主管”。\n\n\n【v4.10 已知订单号】\n- 工单里已经带了订单号（order_no 不为“未知”/空）时，禁止再出现“把订单号发我”“方便提供订单号吗”“麻烦告知订单号”这类话；直接用这个单号处理，不需要买家重复提供。\n- 只有当 order_no 为空、且确实需要查单时，才追问订单号。\n\n【物流查询结果】{{#1789731640234.text#}}\n\n【输出格式】只输出一个 JSON 对象，不要输出思考过程，不要加代码块标记。字段与取值如下：\n{\n  \"reply\": \"中文话术，不超过 200 字，可直接复制发给买家\",\n  \"evidence\": [\"从知识库原文摘录的短句，最多 3 条；没有依据时填空数组 []\"],\n  \"explanation\": \"新人填写：一句话说明为什么这么说；老员工填空字符串 \\\"\\\"\",\n  \"next_action\": \"只能取：直接回复 / 追问订单号 / 追问产品 / 查库存 / 查物流 / 转主管\",\n  \"escalate\": false\n}\n【字段一致】next_action 为「转主管」时 escalate 必须为 true，其余情况必须为 false。\n【explanation 规则】agent_level=veteran 时 explanation 必须是空字符串 \"\"；agent_level=new 时必须写一句为什么。\n【reply 禁词】reply 里绝对不能出现“知识库”“检索”“根据文档”这类内部词。\n【动作边界】只有这六类才 next_action=转主管、escalate=true：索赔/赔偿、退款金额争议、政策例外、客户坚持追责或要投诉到平台、少件/破损/错发需要补发退款、金额≥500 的补偿。\n价格、参数、库存、活动规则、发票、包邮、时效、退货地址、保修范围这类问题，一律 next_action=直接回复、escalate=false。\n知识库没有明确条款时：先按通用口径回答并建议核实，不要直接转主管；只有涉及赔付或例外才转。\n追问产品只在“答案必须依赖具体型号且买家没给型号”时使用；买家给了型号、或问的是品类通用信息，直接回复。\nescalate=true 时 reply 里必须出现“主管”二字；escalate=false 时 reply 里不要出现“主管”。\n"
+        - id: 0f173a74-7f93-4a6f-b4a7-633968841265
+          role: user
+          text: '{{#sys.query#}}/'
+        - id: 691737bc-30d4-491f-a3d7-15e78a1c0d0a
+          role: assistant
+          text: /
+        selected: false
+        title: 物流咨询回答
+        type: llm
+        vision:
+          enabled: false
+      height: 88
+      id: '1789731645578'
+      position:
+        x: 2740.67770238126
+        y: -143.15929520465568
+      positionAbsolute:
+        x: 2740.67770238126
+        y: -143.15929520465568
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+      zIndex: 0
+    - data:
+        context:
+          enabled: true
+          variable_selector:
+          - '1789750948580'
+          - result
+        memory:
+          query_prompt_template: '{{#sys.query#}}
+
+
+            {{#sys.files#}}'
+          role_prefix:
+            assistant: ''
+            user: ''
+          window:
+            enabled: false
+            size: 50
+        model:
+          completion_params:
+            temperature: 0.2
+            max_tokens: 3000
+          mode: chat
+          name: deepseek-v4-flash
+          provider: langgenius/deepseek/deepseek
+        model_selector: null
+        prompt_template:
+        - id: 7a404812-4ca7-4669-ab27-7b8fafa0d6f8
+          role: system
+          text: "你是 hp 数码店的「客服副驾」，服务对象是店铺客服员工，不是买家。员工把买家原话贴给你，你要给出可以直接复制发出去的话术。\n\n【本次输入】\n订单号：{{#1789562177817.order_no#}}（可能为空）\n员工经验：{{#1789562177817.agent_level#}}（new=新人，veteran=老员工）\n场景提示：{{#1789562177817.scene_hint#}}\n\n【知识库】\n{{#context#}}\n\n【店铺政策场景规则】\n1. 只引用知识库里的政策原文，逐条说清：能不能退、时间窗口、运费谁出、需要什么凭证。\n2. 政策有前提条件的（未拆封、不影响二次销售、已激活），必须把前提一起说，不能只说结论。\n3. 知识库没有明确条款的，不得外推“应该可以”；回复“这条我需要跟主管确认”，next_action=转主管。\n4. 涉及金额（退款、运费、赔付）时不报具体数字，除非知识库写明。\n5. 发票、保修、退换货分别对应不同条款，不要混着答。\n6. 只回答规则本身时不要追问订单号；只有买家要求查具体这笔订单的进度/结果，才 next_action=追问订单号。\n\n【输出】只输出一个 JSON 对象，不要任何其他文字：\n{\"reply\":\"可直接发给买家的话术\",\"evidence\":[\"政策原文摘录 1-3 条\"],\"explanation\":\"仅 agent_level=new 时写一句为什么这样回，veteran 填空字符串\",\"next_action\":\"直接回复|追问订单号|追问产品|查库存|查物流|转主管\",\"escalate\":false}\n\n【硬规则】\n- reply 是买家能看懂的口语，不得出现“根据政策第 X 条”“知识库”这类字眼，但语义要和原文一致。\n- 每个结论都要有 evidence 原文摘录；没有依据就回“这个我需要确认后回复您”。\n- 禁止承诺：一定能退、一定赔、具体到账天数、平台强制退款。\n- 买家要求赔偿/投诉升级/提到 315、平台介入、差评 → next_action=转主管，escalate=true。\n- 买家情绪激烈时，先安抚一句再讲条款；一次只给一个建议。\n\n【输出纪律】\nescalate 字段必须输出：next_action=转主管 时 escalate=true，其余动作 escalate=false。\n- 政策类问题直接按条款回答，不追问产品型号；只有核对具体订单状态时才追问订单号。\n\n\n【v3.9 升级边界】\n- 只有以下情况才 next_action=转主管、escalate=true：索赔或赔偿、退款金额争议、政策例外、客户坚持追责或要投诉到平台、少件/破损/错发需要补发退款、金额≥500 的补偿。\n- 纯政策咨询（包邮、时效、退货地址、自提、发票、赠品、活动规则）一律直接回答，escalate=false。\n\n\n【v4.10 已知订单号】\n- 工单里已经带了订单号（order_no 不为“未知”/空）时，禁止再出现“把订单号发我”“方便提供订单号吗”“麻烦告知订单号”这类话；直接用这个单号处理，不需要买家重复提供。\n- 只有当 order_no 为空、且确实需要查单时，才追问订单号。\n\n【输出格式】只输出一个 JSON 对象，不要输出思考过程，不要加代码块标记。字段与取值如下：\n{\n  \"reply\": \"中文话术，不超过 200 字，可直接复制发给买家\",\n  \"evidence\": [\"从知识库原文摘录的短句，最多 3 条；没有依据时填空数组 []\"],\n  \"explanation\": \"新人填写：一句话说明为什么这么说；老员工填空字符串 \\\"\\\"\",\n  \"next_action\": \"只能取：直接回复 / 追问订单号 / 追问产品 / 查库存 / 查物流 / 转主管\",\n  \"escalate\": false\n}\n【字段一致】next_action 为「转主管」时 escalate 必须为 true，其余情况必须为 false。\n【explanation 规则】agent_level=veteran 时 explanation 必须是空字符串 \"\"；agent_level=new 时必须写一句为什么。\n【reply 禁词】reply 里绝对不能出现“知识库”“检索”“根据文档”这类内部词。\n【动作边界】只有这六类才 next_action=转主管、escalate=true：索赔/赔偿、退款金额争议、政策例外、客户坚持追责或要投诉到平台、少件/破损/错发需要补发退款、金额≥500 的补偿。\n价格、参数、库存、活动规则、发票、包邮、时效、退货地址、保修范围这类问题，一律 next_action=直接回复、escalate=false。\n知识库没有明确条款时：先按通用口径回答并建议核实，不要直接转主管；只有涉及赔付或例外才转。\n追问产品只在“答案必须依赖具体型号且买家没给型号”时使用；买家给了型号、或问的是品类通用信息，直接回复。\nescalate=true 时 reply 里必须出现“主管”二字；escalate=false 时 reply 里不要出现“主管”。\n"
+        - id: 89a84c2d-634e-4859-81a1-c7b006c8911b
+          role: user
+          text: '{{#sys.query#}}'
+        selected: false
+        title: 店铺政策咨询回答
+        type: llm
+        vision:
+          enabled: false
+      height: 88
+      id: '1789735390944'
+      position:
+        x: 2043.449561355958
+        y: -35.43029366369062
+      positionAbsolute:
+        x: 2043.449561355958
+        y: -35.43029366369062
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+      zIndex: 0
+    - data:
+        output_type: string
+        selected: false
+        title: 变量聚合器
+        type: variable-aggregator
+        variables:
+        - - '1789731645578'
+          - text
+        - - '1789731569091'
+          - text
+        - - '1789735390944'
+          - text
+        - - '1789721922630'
+          - text
+        - - '1789721925966'
+          - text
+        - - '1789721830758'
+          - text
+        - - '1789721929703'
+          - text
+      height: 264
+      id: '1789736239602'
+      position:
+        x: 3068.3151128415275
+        y: 76.71456286463702
+      positionAbsolute:
+        x: 3068.3151128415275
+        y: 76.71456286463702
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+      zIndex: 0
+    - data:
+        answer: '{{#1789736239602.output#}}'
+        selected: false
+        title: 直接回复 3
+        type: answer
+        variables: []
+      height: 102
+      id: '1789736501096'
+      position:
+        x: 3411.4367440007177
+        y: 76.71456286463702
+      positionAbsolute:
+        x: 3411.4367440007177
+        y: 76.71456286463702
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+      zIndex: 0
+    - data:
+        dataset_ids:
+        - 7e0f827c-62ce-422a-912e-447e252ceaa5
+        multiple_retrieval_config:
+          reranking_enable: true
+          reranking_mode: reranking_model
+          reranking_model:
+            reranking_provider_name: langgenius/siliconflow/siliconflow
+            reranking_model_name: BAAI/bge-reranker-v2-m3
+          score_threshold: null
+          top_k: 8
+          weights:
+            weight_type: customized
+            vector_setting:
+              vector_weight: 0.7
+              embedding_provider_name: ''
+              embedding_model_name: ''
+            keyword_setting:
+              keyword_weight: 0.3
+        query_attachment_selector: []
+        query_variable_selector:
+        - '1789900000011'
+        - output
+        retrieval_mode: multiple
+        selected: false
+        title: 知识检索 6
+        type: knowledge-retrieval
+      height: 52
+      id: '1789750031893'
+      position:
+        x: 1734.3498829271405
+        y: 85.07243272850214
+      positionAbsolute:
+        x: 1734.3498829271405
+        y: 85.07243272850214
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+      zIndex: 0
+    - data:
+        dataset_ids:
+        - 7e0f827c-62ce-422a-912e-447e252ceaa5
+        multiple_retrieval_config:
+          reranking_enable: true
+          reranking_mode: reranking_model
+          reranking_model:
+            reranking_provider_name: langgenius/siliconflow/siliconflow
+            reranking_model_name: BAAI/bge-reranker-v2-m3
+          score_threshold: null
+          top_k: 8
+          weights:
+            weight_type: customized
+            vector_setting:
+              vector_weight: 0.7
+              embedding_provider_name: ''
+              embedding_model_name: ''
+            keyword_setting:
+              keyword_weight: 0.3
+        query_attachment_selector: []
+        query_variable_selector:
+        - '1789900000011'
+        - output
+        retrieval_mode: multiple
+        selected: false
+        title: 知识检索 6
+        type: knowledge-retrieval
+      height: 52
+      id: '1789750948580'
+      position:
+        x: 1734.3498829271405
+        y: -35.43029366369062
+      positionAbsolute:
+        x: 1734.3498829271405
+        y: -35.43029366369062
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+      zIndex: 0
+    - data:
+        instruction: '输入是员工填写的订单号或运单号（可能为「未知」或空）。
+
+          规则：
+
+          1. 输入里是 HP 开头的订单号或 SF/JD/DB/ZT/YT 开头的运单号，原样输出该编号。
+
+          2. 输入为空、未知、或不是编号，输出「未知」。
+
+          3. 只输出编号或「未知」，不要解释。
+
+          '
+        model:
+          completion_params:
+            temperature: 0.2
+            max_tokens: 3000
+          mode: chat
+          name: deepseek-v4-flash
+          provider: langgenius/deepseek/deepseek
+        parameters:
+        - description: 提取快递单号，如订单号或运单号
+          name: order_number
+          required: false
+          type: string
+        query:
+        - '1789562177817'
+        - order_no
+        reasoning_mode: prompt
+        selected: true
+        title: 参数提取器 2
+        type: parameter-extractor
+        vision:
+          enabled: false
+      height: 88
+      id: '1790773251927'
+      position:
+        x: 2043.449561355958
+        y: -157.08458107092198
+      positionAbsolute:
+        x: 2043.449561355958
+        y: -157.08458107092198
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+      zIndex: 0
+    - data:
+        answer: '{{#1789900000002.text#}}'
+        selected: false
+        title: 直接回复 2
+        type: answer
+        variables:
+        - variable: text
+          value_selector:
+          - '1789900000002'
+          - text
+      height: 244
+      id: '1790779672607'
+      position:
+        x: 1286.187882140939
+        y: 494.932445422179
+      positionAbsolute:
+        x: 1286.187882140939
+        y: 494.932445422179
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+      zIndex: 0
+    - height: 100
+      id: '1789900000011'
+      position:
+        x: 320
+        y: 120
+      positionAbsolute:
+        x: 320
+        y: 120
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+      zIndex: 0
+      data:
+        type: template-transform
+        title: 检索词清洗
+        variables:
+        - variable: query
+          value_selector:
+          - '1789562177817'
+          - sys.query
+        template: '{{ query.rstrip(''？?。！!，,、 '') }}'
+    - height: 100
+      id: '1789900000002'
+      position:
+        x: 320
+        y: 260
+      positionAbsolute:
+        x: 320
+        y: 260
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+      zIndex: 0
+      data:
+        type: llm
+        context:
+          enabled: false
+          variable_selector: []
+        model:
+          completion_params:
+            temperature: 0.2
+            max_tokens: 800
+          mode: chat
+          name: deepseek-v4-flash
+          provider: langgenius/deepseek/deepseek
+        prompt_template:
+        - role: system
+          text: "你是 hp 数码店的「客服副驾」，服务对象是店铺客服员工，不是买家。员工把买家原话贴给你，你要给出可以直接复制发出去的话术。\n\n【本次输入】\n订单号：{{#1789562177817.order_no#}}（可能为空）\n员工经验：{{#1789562177817.agent_level#}}（new=新人，veteran=老员工）\n场景提示：{{#1789562177817.scene_hint#}}\n\n【知识库】\n{{#context#}}\n\n【信息不足场景规则】\n1. 能一句话回应的（寒暄、无关问题、乱码、招聘、比价）直接回一句并把话头拉回业务，next_action=直接回复，不要用追问产品收尾。\n2. 只有买家明显在问订单/物流/退款进度、缺订单号时才 next_action=追问订单号；缺产品型号且必须知道型号才能答时才 next_action=追问产品。\n3. 一次只问一个问题，不要列一串。\n4. 追问后可以说“您补充后我马上帮您查”，不承诺时间。\n5. 买家连续两次说不清，直接建议转人工，next_action=转主管。\n\n【输出】只输出一个 JSON 对象，不要任何其他文字：\n{\"reply\":\"可直接发给买家的话术\",\"evidence\":[\"无需依据时留空数组\"],\"explanation\":\"仅 agent_level=new 时写一句为什么先问这个，veteran 填空字符串\",\"next_action\":\"追问订单号|追问产品|转主管\",\"escalate\":false}\n\n【硬规则】\n- reply 是买家能看懂的口语，不得出现“根据知识库”这类字眼。\n- 不编造任何产品、政策、物流信息。\n- 买家已经在催或带情绪时，先安抚一句再追问。\n- 涉及赔偿、投诉升级 → next_action=转主管，escalate=true。\n\n【输出纪律】\nescalate 字段必须输出：next_action=转主管 时 escalate=true，其余动作 escalate=false。\n\n\n【v3.9 升级边界】\n- 只有以下情况才 next_action=转主管、escalate=true：索赔或赔偿、退款金额争议、政策例外、客户坚持追责或要投诉到平台、少件/破损/错发需要补发退款、金额≥500 的补偿。\n- 纯政策咨询（包邮、时效、退货地址、自提、发票、赠品、活动规则）一律直接回答，escalate=false。\n\n\n【v4.1 动作边界（必须先判断再作答）】\n- 转主管的触发条件只有四类，命中任一类才 next_action=转主管、escalate=true：\n  1) 索赔、赔偿、退款金额争议、误工费精神损失；\n  2) 少件、错发、破损等售后争议需要补发或退款；\n  3) 客户明确投诉、强烈不满、要求给说法或升级到平台；\n  4) 政策例外，例如已退款仍要求保留商品。\n- 除此之外一律不转主管：政策规则、活动规则、参数、库存、运费、发票、保修年限、专票税点、限购、分期、价保、店史、闲聊——该直接答就直接答。\n- 动作顺序：能直接答 → 直接回复；缺订单号且必须查单 → 追问订单号；缺型号且必须型号 → 追问产品；问库存 → 查库存；问包裹进度 → 查物流。\n- escalate 必须严格等于 (next_action == \"转主管\")，不允许出现“直接回复 + escalate=true”。\n\n【v4.1b 冲突裁决】\n- 若【v4.1 动作边界】与任何一条旧规则冲突，一律以【v4.1 动作边界】为准。\n- 知识库没有写到的规则类问题（限购、分期、价保、定金、店史、发票税点等）：可以说“具体以活动页/页面为准”，然后直接回答，不要因为知识库没写就转主管。\n- 只有命中【v4.1 动作边界】四类触发条件才允许出现“主管”两个字。\n\n【v4.2 关键词路由表（优先级最高，先查表再作答）】\n- 出现下列词之一 → next_action=转主管、escalate=true：退款、赔偿、补偿、投诉、差评、315、12315、曝光、起诉、维权、坏了、坏了两次、损坏、进水、摔、裂、数据丢失、丢件、已签收没收到、要求给说法。\n- 出现下列词之一 → next_action=追问订单号、escalate=false：少件、漏发、赠品没发、错发、发错、多发、少发（若订单号已知，禁止追问，直接用该单号核实并回复）。\n- 出现下列词之一 → next_action=直接回复、escalate=false，禁止出现“主管”：保修几年、保修期、寄修、上门、专票、税点、限购、分期、价保、定金、退货次数、店史、开店多久、推销、发票、开票、运费、包邮、时效、自提、退货地址。\n- 只有一条规则冲突时以本表为准；本表没覆盖的，按【v4.1 动作边界】判断。\n\n【v4.3 关键词路由表（覆盖 v4.2，冲突以本表为准）】\n- 转主管（next_action=转主管、escalate=true）：退款、赔偿、补偿、投诉、差评、315、12315、曝光、起诉、维权、损坏、摔、裂、数据丢失、丢件、已签收没收到、描述不一样、参数不符、开错、重开、保修范围、能不能保修、算不算保修、说好送却没送。\n- 追问订单号（escalate=false）：少件、漏发、赠品没发、错发、发错、多发、少发（若订单号已知，禁止追问，直接用该单号核实并回复）。\n- 查物流（escalate=false）：三天没更新、卡在哪、催一下、到哪了、什么时候到。\n- 直接回复（escalate=false，禁止出现“主管”）：进水后能不能开机、保修几年、保修期、寄修、上门、专票、税点、限购、分期、价保、定金、退货次数、店史、开店多久、推销、发票、开票、运费、包邮、时效、自提、退货地址。\n- 进水一律只给安全提示（不要开机、尽快送修），不转主管。\n\n【v4.4 evidence 规则（覆盖前面所有 evidence 要求）】\n- evidence 必须是**非空数组**，至少 1 条。\n- 知识库检索结果为空时，写你实际依据的内联资料名称并摘一句原文，例如：\"内联资料-产品参数：RTX5080 首发价 7999 元\"。\n- 只有当你确实没有任何依据（闲聊、寒暄、乱码）时，才写一条说明，例如：\"无现成条款，按店铺通用规则回答\"。\n- 禁止返回空数组，禁止编造不存在的文档名。\n\n【v4.4 未知场景动作】\n- 未知场景一律 next_action=直接回复或追问产品，escalate=false，reply 里不出现“主管”。\n- 只有买家明确要求投诉、索赔时才转主管。\n\n【输出格式】只输出一个 JSON 对象，不要输出思考过程，不要加代码块标记。字段与取值如下：\n{\n  \"reply\": \"中文话术，不超过 200 字，可直接复制发给买家\",\n  \"evidence\": [\"从知识库原文摘录的短句，最多 3 条；没有依据时填空数组 []\"],\n  \"explanation\": \"新人填写：一句话说明为什么这么说；老员工填空字符串 \\\"\\\"\",\n  \"next_action\": \"只能取：直接回复 / 追问订单号 / 追问产品 / 查库存 / 查物流 / 转主管\",\n  \"escalate\": false\n}\n【字段一致】next_action 为「转主管」时 escalate 必须为 true，其余情况必须为 false。\n【explanation 规则】agent_level=veteran 时 explanation 必须是空字符串 \"\"；agent_level=new 时必须写一句为什么。\n【reply 禁词】reply 里绝对不能出现“知识库”“检索”“根据文档”这类内部词。\n【动作边界】只有这六类才 next_action=转主管、escalate=true：索赔/赔偿、退款金额争议、政策例外、客户坚持追责或要投诉到平台、少件/破损/错发需要补发退款、金额≥500 的补偿。\n价格、参数、库存、活动规则、发票、包邮、时效、退货地址、保修范围这类问题，一律 next_action=直接回复、escalate=false。\n知识库没有明确条款时：先按通用口径回答并建议核实，不要直接转主管；只有涉及赔付或例外才转。\n追问产品只在“答案必须依赖具体型号且买家没给型号”时使用；买家给了型号、或问的是品类通用信息，直接回复。\nescalate=true 时 reply 里必须出现“主管”二字；escalate=false 时 reply 里不要出现“主管”。\n"
+        - role: user
+          text: '{{#sys.query#}}'
+        selected: false
+    viewport:
+      x: -652.7210751128581
+      y: 352.54469758694404
+      zoom: 0.5743491774985178
+  rag_pipeline_variables: []
