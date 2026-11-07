@@ -45,7 +45,7 @@ dify-workflow/        Chatflow DSL 与构建/发布脚本
 mcp-servers/          库存、物流两个 MCP 服务（mock 数据）
 web/                  FastAPI 网关 + 三栏工作台（登录、生成、复制/修改/无用/放弃、周报）
 evaluation/           200 条题库、评测脚本、Excel 导出、回归集
-docs/                 评测报告、归因总表、MVP 复盘、规格与路线图
+docs/                 评测报告、归因总表、架构、规格与迁移说明
 design/               设计 token 与界面截图
 ```
 
@@ -100,5 +100,5 @@ python evaluation/summarize_200.py --report evaluation/reports/copilot_eval/loca
 
 - [评测报告](docs/eval-report-final.md)：200 条口径、分场景、版本演进与失败归因
 - [归因总表](docs/归因总表.md)：从改 Dify 到试点回灌的 23 个节点，现象 → 根因 → 解决 → 验证
-- [MVP 复盘](docs/mvp-summary.md)：问题、交付、关键判断、下一步
-- [架构说明](docs/architecture.md) / [工作台规格](docs/workbench-mvp-spec.md) / [上线路图](docs/roadmap-web-pilot.md)
+- [架构说明](docs/architecture.md)
+- [工作台规格](docs/workbench-mvp-spec.md) / [评测口径](docs/evaluation-system.md) / [DSL 迁移说明](docs/copilot-migration.md)
